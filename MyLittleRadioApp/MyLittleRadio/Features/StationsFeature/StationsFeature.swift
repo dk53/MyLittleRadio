@@ -6,15 +6,21 @@ import ComposableArchitecture
 struct StationsFeature {
 
     @ObservableState
-    struct State: Equatable {
+    struct State {
         var stations: [Station] = []
+        var isLoading: Bool = false
+        @Presents var alert: AlertState<Action.Alert>?
     }
 
     enum Action {
         case fetchStations
-        case setStations([Station])
+        case stationsResponse(Result<[Station], Error>)
+        case alert(PresentationAction<Alert>)
 
-        case task
+        @CasePathable
+        enum Alert: Equatable {
+              case retryButtonTapped
+          }
     }
 
     // MARK: - Dependencies
@@ -25,21 +31,42 @@ struct StationsFeature {
     var body: some ReducerOf<Self> {
         Reduce<State, Action> { state, action in
             switch action {
-                case .fetchStations:
-                    return .run { send in
-                        if let stations = try? await apiClient.fetchStations() {
-                            await send(.setStations(stations))
-                        }
+            case .fetchStations:
+                state.isLoading = true
+                return .run { send in
+                    do {
+                        let stations = try await apiClient.fetchStations()
+                        await send(.stationsResponse(.success(stations)))
+                    } catch {
+                        await send(.stationsResponse(.failure(error)))
                     }
-                case let .setStations(stations):
-                    state.stations = stations
-                    return .none
+                }
+                
+            case let .stationsResponse(.success(stations)):
+                state.isLoading = false
+                state.stations = stations
+                return .none
 
-                case .task:
-                    return .run { send in
-                        await send(.fetchStations)
+            case let .stationsResponse(.failure(error)):
+                state.alert = AlertState {
+                    TextState("Error")
+                } actions: {
+                    ButtonState(action: .retryButtonTapped) {
+                        TextState("Retry")
                     }
+                } message: {
+                    TextState("Failed to fetch stations: \(error.localizedDescription)")
+                }
+
+                return .none
+
+            case .alert(.presented(.retryButtonTapped)):
+                return .send(.fetchStations)
+
+            case .alert:
+                 return .none
             }
         }
+        .ifLet(\.$alert, action: \.alert)
     }
 }
