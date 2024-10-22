@@ -11,7 +11,7 @@ final class StationsFeatureTests: XCTestCase {
             reducer: { StationsFeature() }
         )
 
-        let mockStations = [Station.defaultStation]
+        let mockStations = [Station.mock1]
         await MainActor.run {
             store.dependencies.apiClient.fetchStations = { mockStations }
         }

@@ -8,17 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		06AD012D2CC10D590093665F /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 06AD012C2CC10D590093665F /* ComposableArchitecture */; };
+		4DCD8DA02CC8558B000B1759 /* iOSSnapshotTestCase in Frameworks */ = {isa = PBXBuildFile; productRef = 4DCD8D9F2CC8558B000B1759 /* iOSSnapshotTestCase */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		06AD010F2CC10D030093665F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 06AD00F52CC10D020093665F /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 06AD00FC2CC10D020093665F;
-			remoteInfo = MyLittleRadio;
-		};
-		06AD01192CC10D030093665F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 06AD00F52CC10D020093665F /* Project object */;
 			proxyType = 1;
@@ -30,9 +24,31 @@
 /* Begin PBXFileReference section */
 		06AD00FD2CC10D020093665F /* MyLittleRadio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyLittleRadio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06AD010E2CC10D030093665F /* MyLittleRadioTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyLittleRadioTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		06AD01182CC10D030093665F /* MyLittleRadioUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyLittleRadioUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DBD47392CC8203400C4EB48 /* MyLittleRadio.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = MyLittleRadio.xctestplan; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		4D7C9DD72CC85222004149F9 /* Exceptions for "MyLittleRadioTests" folder in "MyLittleRadioTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"Mocks/Station+Mocks.swift",
+				StationFeatureTests/StationEndpointTests.swift,
+				StationFeatureTests/StationFeatureTests.swift,
+				StationFeatureTests/StationViewTests.swift,
+			);
+			target = 06AD010D2CC10D030093665F /* MyLittleRadioTests */;
+		};
+		4D7C9DE22CC85278004149F9 /* Exceptions for "MyLittleRadioTests" folder in "MyLittleRadio" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"Mocks/Station+Mocks.swift",
+				StationFeatureTests/StationEndpointTests.swift,
+				StationFeatureTests/StationFeatureTests.swift,
+				StationFeatureTests/StationViewTests.swift,
+			);
+			target = 06AD00FC2CC10D020093665F /* MyLittleRadio */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		06AD00FF2CC10D020093665F /* MyLittleRadio */ = {
@@ -40,14 +56,13 @@
 			path = MyLittleRadio;
 			sourceTree = "<group>";
 		};
-		06AD01112CC10D030093665F /* MyLittleRadioTests */ = {
+		4D7C9DD12CC85222004149F9 /* MyLittleRadioTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				4D7C9DE22CC85278004149F9 /* Exceptions for "MyLittleRadioTests" folder in "MyLittleRadio" target */,
+				4D7C9DD72CC85222004149F9 /* Exceptions for "MyLittleRadioTests" folder in "MyLittleRadioTests" target */,
+			);
 			path = MyLittleRadioTests;
-			sourceTree = "<group>";
-		};
-		06AD011B2CC10D030093665F /* MyLittleRadioUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = MyLittleRadioUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -65,13 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		06AD01152CC10D030093665F /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				4DCD8DA02CC8558B000B1759 /* iOSSnapshotTestCase in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,8 +92,7 @@
 			children = (
 				4DBD47392CC8203400C4EB48 /* MyLittleRadio.xctestplan */,
 				06AD00FF2CC10D020093665F /* MyLittleRadio */,
-				06AD01112CC10D030093665F /* MyLittleRadioTests */,
-				06AD011B2CC10D030093665F /* MyLittleRadioUITests */,
+				4D7C9DD12CC85222004149F9 /* MyLittleRadioTests */,
 				06AD00FE2CC10D020093665F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -94,7 +102,6 @@
 			children = (
 				06AD00FD2CC10D020093665F /* MyLittleRadio.app */,
 				06AD010E2CC10D030093665F /* MyLittleRadioTests.xctest */,
-				06AD01182CC10D030093665F /* MyLittleRadioUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -116,6 +123,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				06AD00FF2CC10D020093665F /* MyLittleRadio */,
+				4D7C9DD12CC85222004149F9 /* MyLittleRadioTests */,
 			);
 			name = MyLittleRadio;
 			packageProductDependencies = (
@@ -138,38 +146,13 @@
 			dependencies = (
 				06AD01102CC10D030093665F /* PBXTargetDependency */,
 			);
-			fileSystemSynchronizedGroups = (
-				06AD01112CC10D030093665F /* MyLittleRadioTests */,
-			);
 			name = MyLittleRadioTests;
 			packageProductDependencies = (
+				4DCD8D9F2CC8558B000B1759 /* iOSSnapshotTestCase */,
 			);
 			productName = MyLittleRadioTests;
 			productReference = 06AD010E2CC10D030093665F /* MyLittleRadioTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		06AD01172CC10D030093665F /* MyLittleRadioUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 06AD01282CC10D030093665F /* Build configuration list for PBXNativeTarget "MyLittleRadioUITests" */;
-			buildPhases = (
-				06AD01142CC10D030093665F /* Sources */,
-				06AD01152CC10D030093665F /* Frameworks */,
-				06AD01162CC10D030093665F /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				06AD011A2CC10D030093665F /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				06AD011B2CC10D030093665F /* MyLittleRadioUITests */,
-			);
-			name = MyLittleRadioUITests;
-			packageProductDependencies = (
-			);
-			productName = MyLittleRadioUITests;
-			productReference = 06AD01182CC10D030093665F /* MyLittleRadioUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -188,10 +171,6 @@
 						CreatedOnToolsVersion = 16.0;
 						TestTargetID = 06AD00FC2CC10D020093665F;
 					};
-					06AD01172CC10D030093665F = {
-						CreatedOnToolsVersion = 16.0;
-						TestTargetID = 06AD00FC2CC10D020093665F;
-					};
 				};
 			};
 			buildConfigurationList = 06AD00F82CC10D020093665F /* Build configuration list for PBXProject "MyLittleRadio" */;
@@ -205,6 +184,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				06AD012B2CC10D590093665F /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+				4DCD8D9E2CC8558B000B1759 /* XCRemoteSwiftPackageReference "ios-snapshot-test-case" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 06AD00FE2CC10D020093665F /* Products */;
@@ -213,7 +193,6 @@
 			targets = (
 				06AD00FC2CC10D020093665F /* MyLittleRadio */,
 				06AD010D2CC10D030093665F /* MyLittleRadioTests */,
-				06AD01172CC10D030093665F /* MyLittleRadioUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -227,13 +206,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		06AD010C2CC10D030093665F /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		06AD01162CC10D030093665F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -257,13 +229,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		06AD01142CC10D030093665F /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -271,11 +236,6 @@
 			isa = PBXTargetDependency;
 			target = 06AD00FC2CC10D020093665F /* MyLittleRadio */;
 			targetProxy = 06AD010F2CC10D030093665F /* PBXContainerItemProxy */;
-		};
-		06AD011A2CC10D030093665F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 06AD00FC2CC10D020093665F /* MyLittleRadio */;
-			targetProxy = 06AD01192CC10D030093665F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -399,6 +359,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = MyLittleRadio/MyLittleRadio.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -439,6 +400,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = MyLittleRadio/MyLittleRadio.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -451,8 +413,6 @@
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
-				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
-				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -520,50 +480,6 @@
 			};
 			name = Release;
 		};
-		06AD01292CC10D030093665F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7J8GPSDG34;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
-				MACOSX_DEPLOYMENT_TARGET = 15.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.radiofrance.MyLittleRadioUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
-				TEST_TARGET_NAME = MyLittleRadio;
-				XROS_DEPLOYMENT_TARGET = 2.0;
-			};
-			name = Debug;
-		};
-		06AD012A2CC10D030093665F /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7J8GPSDG34;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
-				MACOSX_DEPLOYMENT_TARGET = 15.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.radiofrance.MyLittleRadioUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
-				TEST_TARGET_NAME = MyLittleRadio;
-				XROS_DEPLOYMENT_TARGET = 2.0;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -594,15 +510,6 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		06AD01282CC10D030093665F /* Build configuration list for PBXNativeTarget "MyLittleRadioUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				06AD01292CC10D030093665F /* Debug */,
-				06AD012A2CC10D030093665F /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
@@ -614,6 +521,14 @@
 				minimumVersion = 1.15.1;
 			};
 		};
+		4DCD8D9E2CC8558B000B1759 /* XCRemoteSwiftPackageReference "ios-snapshot-test-case" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/uber/ios-snapshot-test-case.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -621,6 +536,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 06AD012B2CC10D590093665F /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
 			productName = ComposableArchitecture;
+		};
+		4DCD8D9F2CC8558B000B1759 /* iOSSnapshotTestCase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4DCD8D9E2CC8558B000B1759 /* XCRemoteSwiftPackageReference "ios-snapshot-test-case" */;
+			productName = iOSSnapshotTestCase;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

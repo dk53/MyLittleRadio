@@ -45,6 +45,7 @@ struct StationsFeature {
             case let .stationsResponse(.success(stations)):
                 state.isLoading = false
                 state.stations = stations
+                
                 return .none
 
             case let .stationsResponse(.failure(error)):
