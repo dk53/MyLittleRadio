@@ -9,8 +9,9 @@ final class ApiManager {
             throw URLError(.badURL)
         }
 
+        try await Task.sleep(nanoseconds: 2_000_000_000)
         let (data, _) = try await URLSession.shared.data(from: url)
-        let stations = try JSONDecoder().decode([Station].self, from: data)
-        return stations
+        let response = try JSONDecoder().decode(StationsResponse.self, from: data)
+        return response.stations
     }
 }
