@@ -2,6 +2,10 @@
 
 import Foundation
 
+struct StationsResponse: Codable {
+    let stations: [Station]
+}
+
 struct Station: Codable, Equatable, Identifiable {
 
     struct Analytics: Codable, Equatable {
@@ -17,8 +21,8 @@ struct Station: Codable, Equatable, Identifiable {
         let squareImageUrl: String?
     }
 
-    enum RadioType: Codable {
-        case onAir
+    enum RadioType: String, Equatable, Codable {
+        case onAir = "on_air"
         case locale
     }
 
