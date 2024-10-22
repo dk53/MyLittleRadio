@@ -14,22 +14,33 @@ struct StationsView: View {
 
     var body: some View {
         WithPerceptionTracking {
-            ScrollView {
-                LazyVStack(alignment: .leading) {
-                    ForEach(store.stations) { station in
-                        HStack(spacing: 8) {
-                            Text(station.title)
-                            Spacer()
-                            Image(systemName: "chevron.right")
+            ZStack {
+                ScrollView {
+                    LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 16) {
+                        ForEach(store.stations) { station in
+                            VStack(spacing: 8) {
+                                Text(station.title)
+                                    .font(.headline)
+                                    .frame(maxWidth: .infinity)
+                                    .padding()
+                                    .background(Color.gray.opacity(0.2))
+                                    .cornerRadius(10)
+                            }
+                            .frame(height: 100)
                         }
-                        .frame(height: 50)
                     }
+                    .padding(.horizontal)
                 }
+
+                ProgressView()
+                    .opacity(store.isLoading ? 1 : 0)
+                    .scaleEffect(store.isLoading ? 1 : 0.5)
+                    .animation(.easeInOut(duration: 0.5), value: store.isLoading)
             }
-        }
-        .alert($store.scope(state: \.alert, action: \.alert))
-        .task {
-            store.send(.fetchStations)
+            .alert($store.scope(state: \.alert, action: \.alert))
+            .task {
+                store.send(.fetchStations)
+            }
         }
     }
 }

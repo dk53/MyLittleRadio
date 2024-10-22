@@ -6,7 +6,7 @@ import ComposableArchitecture
 struct StationsFeature {
 
     @ObservableState
-    struct State {
+    struct State: Equatable {
         var stations: [Station] = []
         var isLoading: Bool = false
         @Presents var alert: AlertState<Action.Alert>?
@@ -48,6 +48,7 @@ struct StationsFeature {
                 return .none
 
             case let .stationsResponse(.failure(error)):
+                state.isLoading = false
                 state.alert = AlertState {
                     TextState("Error")
                 } actions: {
