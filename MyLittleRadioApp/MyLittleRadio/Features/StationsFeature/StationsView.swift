@@ -18,15 +18,7 @@ struct StationsView: View {
                 ScrollView {
                     LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 16) {
                         ForEach(store.stations) { station in
-                            VStack(spacing: 8) {
-                                Text(station.title)
-                                    .font(.headline)
-                                    .frame(maxWidth: .infinity)
-                                    .padding()
-                                    .background(Color.gray.opacity(0.2))
-                                    .cornerRadius(10)
-                            }
-                            .frame(height: 100)
+                            StationView(title: station.title, showMusicIcon: station.isMusical, color: station.colors.primary.toColor)
                         }
                     }
                     .padding(.horizontal)
@@ -41,6 +33,8 @@ struct StationsView: View {
             .task {
                 store.send(.fetchStations)
             }
+            .navigationTitle("Stations")
+            .navigationBarTitleDisplayMode(.automatic)
         }
     }
 }

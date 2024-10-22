@@ -45,17 +45,6 @@
                ReferencedContainer = "container:MyLittleRadio.xcodeproj">
             </BuildableReference>
          </TestableReference>
-         <TestableReference
-            skipped = "NO"
-            parallelizable = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "06AD01172CC10D030093665F"
-               BuildableName = "MyLittleRadioUITests.xctest"
-               BlueprintName = "MyLittleRadioUITests"
-               ReferencedContainer = "container:MyLittleRadio.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

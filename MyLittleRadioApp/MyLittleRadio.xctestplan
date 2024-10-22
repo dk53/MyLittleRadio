@@ -9,6 +9,16 @@
     }
   ],
   "defaultOptions" : {
+    "environmentVariableEntries" : [
+      {
+        "key" : "IMAGE_DIFF_DIR",
+        "value" : "$(SOURCE_ROOT)\/$(PROJECT_NAME)Tests\/FailureDiffs"
+      },
+      {
+        "key" : "FB_REFERENCE_IMAGE_DIR",
+        "value" : "$(SOURCE_ROOT)\/$(PROJECT_NAME)Tests\/ReferenceImages"
+      }
+    ],
     "targetForVariableExpansion" : {
       "containerPath" : "container:MyLittleRadio.xcodeproj",
       "identifier" : "06AD00FC2CC10D020093665F",
@@ -21,14 +31,6 @@
         "containerPath" : "container:MyLittleRadio.xcodeproj",
         "identifier" : "06AD010D2CC10D030093665F",
         "name" : "MyLittleRadioTests"
-      }
-    },
-    {
-      "parallelizable" : true,
-      "target" : {
-        "containerPath" : "container:MyLittleRadio.xcodeproj",
-        "identifier" : "06AD01172CC10D030093665F",
-        "name" : "MyLittleRadioUITests"
       }
     }
   ],
