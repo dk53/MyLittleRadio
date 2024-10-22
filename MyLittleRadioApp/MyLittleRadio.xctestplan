@@ -1,0 +1,36 @@
+{
+  "configurations" : [
+    {
+      "id" : "F1BE71C1-2088-4DE5-938E-E6D191A658FF",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:MyLittleRadio.xcodeproj",
+      "identifier" : "06AD00FC2CC10D020093665F",
+      "name" : "MyLittleRadio"
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:MyLittleRadio.xcodeproj",
+        "identifier" : "06AD010D2CC10D030093665F",
+        "name" : "MyLittleRadioTests"
+      }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:MyLittleRadio.xcodeproj",
+        "identifier" : "06AD01172CC10D030093665F",
+        "name" : "MyLittleRadioUITests"
+      }
+    }
+  ],
+  "version" : 1
+}
