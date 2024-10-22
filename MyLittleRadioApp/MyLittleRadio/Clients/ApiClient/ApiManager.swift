@@ -4,21 +4,13 @@ import Foundation
 
 final class ApiManager {
 
-    func fetchStations() async -> [Station] {
-        let mockedData = [
-            Station(
-                id: "1",
-                title: "Radio 1"
-            ),
-            Station(
-                id: "2",
-                title: "Radio 2"
-            ),
-            Station(
-                id: "3",
-                title: "Radio 3"
-            )
-        ]
-        return mockedData
+    func fetchStations() async throws -> [Station] {
+        guard let url = URL(string: APIConfig.stationsEndpoint) else {
+            throw URLError(.badURL)
+        }
+
+        let (data, _) = try await URLSession.shared.data(from: url)
+        let stations = try JSONDecoder().decode([Station].self, from: data)
+        return stations
     }
 }
