@@ -30,12 +30,11 @@ class StationsViewTests: FBSnapshotTestCase {
         let vc = UIHostingController(rootView: view)
 
         let window = UIWindow(frame: canvasSize)
-         window.rootViewController = vc
-         window.makeKeyAndVisible()
+        window.rootViewController = vc
+        window.makeKeyAndVisible()
 
-         // Ensure the view layout is completed before snapshot
-         vc.view.setNeedsLayout()
-         vc.view.layoutIfNeeded()
+        vc.view.setNeedsLayout()
+        vc.view.layoutIfNeeded()
 
         FBSnapshotVerifyView(vc.view, identifier: id)
     }

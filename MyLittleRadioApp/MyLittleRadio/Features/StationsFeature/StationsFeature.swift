@@ -8,6 +8,7 @@ struct StationsFeature {
     @ObservableState
     struct State: Equatable {
         var stations: [Station] = []
+        var selectedStation: Station? = nil
         var isLoading: Bool = false
         @Presents var alert: AlertState<Action.Alert>?
     }
@@ -16,6 +17,8 @@ struct StationsFeature {
         case fetchStations
         case stationsResponse(Result<[Station], Error>)
         case alert(PresentationAction<Alert>)
+        case selectStation(Station)
+        case deselect(Station)
 
         @CasePathable
         enum Alert: Equatable {
@@ -67,6 +70,14 @@ struct StationsFeature {
 
             case .alert:
                  return .none
+
+            case .selectStation(let station):
+                state.selectedStation = station
+                return .none
+
+            case .deselect(_):
+                state.selectedStation = nil
+                return .none
             }
         }
         .ifLet(\.$alert, action: \.alert)

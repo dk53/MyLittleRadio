@@ -17,22 +17,38 @@ extension Station {
         isMusical: false,
         assets: nil
     )
-    
+
     static let mock2 = Station(
         id: "1",
         title: "Station Title 1",
+        brandId: "BRAND1",
+        hasTimeshift: true,
+        shortTitle: "ST1",
+        type: .onAir,
+        streamUrl: "https://mock1.mp3",
+        analytics: .init(value: "mock_1", stationAudienceId: 1),
+        liveRule: "mock_rule_1",
         colors: Station.Colors(
             primary: "#FF5733"
         ),
-        isMusical: true
+        isMusical: true,
+        assets: nil
     )
-    
+
     static let mock3 = Station(
         id: "2",
         title: "Station Title 2",
+        brandId: "BRAND2",
+        hasTimeshift: false,
+        shortTitle: "ST2",
+        type: .onAir,
+        streamUrl: "https://mock2.mp3",
+        analytics: .init(value: "mock_2", stationAudienceId: 2),
+        liveRule: "mock_rule_2",
         colors: Station.Colors(
             primary: "#33FF57"
         ),
-        isMusical: false
+        isMusical: false,
+        assets: nil
     )
 }
