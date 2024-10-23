@@ -6,22 +6,22 @@ struct StationsResponse: Codable {
     let stations: [Station]
 }
 
-struct Station: Codable, Equatable, Identifiable {
+struct Station: Codable, Equatable, Identifiable, Hashable {
 
-    struct Analytics: Codable, Equatable {
+    struct Analytics: Codable, Equatable, Hashable {
         let value: String
         let stationAudienceId: Int
     }
 
-    struct Colors: Codable, Equatable {
+    struct Colors: Codable, Equatable, Hashable {
         let primary: String
     }
 
-    struct Assets: Codable, Equatable {
+    struct Assets: Codable, Equatable, Hashable {
         let squareImageUrl: String?
     }
 
-    enum RadioType: String, Equatable, Codable {
+    enum RadioType: String, Equatable, Codable, Hashable {
         case onAir = "on_air"
         case locale
     }
@@ -39,17 +39,17 @@ struct Station: Codable, Equatable, Identifiable {
     let isMusical: Bool
     let assets: Assets?
 
-    init(id: String = "",
-         title: String = "",
-         brandId: String = "",
-         hasTimeshift: Bool = false,
-         shortTitle: String = "",
-         type: RadioType = .onAir,
-         streamUrl: String = "",
-         analytics: Analytics = Analytics(value: "", stationAudienceId: Int.random(in: 1...14)),
-         liveRule: String = "",
-         colors: Colors = Colors(primary: ""),
-         isMusical: Bool = false,
+    init(id: String,
+         title: String,
+         brandId: String,
+         hasTimeshift: Bool,
+         shortTitle: String ,
+         type: RadioType,
+         streamUrl: String,
+         analytics: Analytics,
+         liveRule: String,
+         colors: Colors,
+         isMusical: Bool,
          assets: Assets? = nil) {
         self.id = id
         self.title = title
