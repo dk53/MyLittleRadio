@@ -31,7 +31,10 @@
 		4D7C9DD72CC85222004149F9 /* Exceptions for "MyLittleRadioTests" folder in "MyLittleRadioTests" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				AudioPlayerFeatureTests/AudioPlayerFeatureTests.swift,
 				"Mocks/Station+Mocks.swift",
+				StationDetailsFeatureTests/StationDetailsFeatureTests.swift,
+				StationDetailsFeatureTests/StationDetailsViewTests.swift,
 				StationFeatureTests/StationEndpointTests.swift,
 				StationFeatureTests/StationFeatureTests.swift,
 				StationFeatureTests/StationViewTests.swift,
@@ -41,7 +44,10 @@
 		4D7C9DE22CC85278004149F9 /* Exceptions for "MyLittleRadioTests" folder in "MyLittleRadio" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				AudioPlayerFeatureTests/AudioPlayerFeatureTests.swift,
 				"Mocks/Station+Mocks.swift",
+				StationDetailsFeatureTests/StationDetailsFeatureTests.swift,
+				StationDetailsFeatureTests/StationDetailsViewTests.swift,
 				StationFeatureTests/StationEndpointTests.swift,
 				StationFeatureTests/StationFeatureTests.swift,
 				StationFeatureTests/StationViewTests.swift,

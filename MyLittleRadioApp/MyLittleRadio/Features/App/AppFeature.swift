@@ -54,11 +54,13 @@ struct AppFeature {
                 state.selectedStation = nil
                 state.isDetailViewPresented = false
                 return .none
+            case .audioPlayerFeature(.playPauseTapped):
+                state.stationsFeature.playingStation = state.stationDetailsFeature.isPlaying ? state.selectedStation : nil
+                return .none
+            case .stationDetailsFeature(_):
+                return .none
             case .audioPlayerFeature(_):
                 return .none
-            case .stationDetailsFeature(.audioPlayer(_)):
-                return .none
-            }
-        }
+            }        }
     }
 }

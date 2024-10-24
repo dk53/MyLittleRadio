@@ -4,37 +4,31 @@ import ComposableArchitecture
 struct AppView: View {
 
     @Perception.Bindable var store: StoreOf<AppFeature>
-    @Namespace private var animationNamespace
-    
+
     init(store: StoreOf<AppFeature>) {
         self.store = store
     }
-    
+
     var body: some View {
         WithPerceptionTracking {
-            WithViewStore(store, observe: { $0 }) { viewStore in
-                ZStack {
-                    StationsView(
-                        store: store.scope(state: \.stationsFeature, action: \.stationsFeature),
-                        animationNamespace: animationNamespace
-                    )
-                    .allowsHitTesting(!viewStore.isDetailViewPresented)
-                    .blur(radius: viewStore.isDetailViewPresented ? 10 : 0)
+            ZStack {
+                StationsView( store: store.scope(state: \.stationsFeature, action: \.stationsFeature))
+                    .allowsHitTesting(!store.isDetailViewPresented)
+                    .blur(radius: store.isDetailViewPresented ? 10 : 0)
 
-                    if let selectedStation = viewStore.selectedStation {
+                    .sheet(isPresented: Binding(
+                        get: { store.state.isDetailViewPresented },
+                        set: { _ in store.send(.dismissStationDetails) }
+                    )) {
                         StationDetailsView(
                             store: store.scope(state: \.stationDetailsFeature, action: \.stationDetailsFeature),
                             onDismiss: {
-                                viewStore.send(.dismissStationDetails)
-                            }, animationNamespace: animationNamespace, animationIDs: AnimationIDs(
-                                textId: selectedStation.title,
-                                backgroundId: "\(selectedStation.title)_background",
-                                namespace: animationNamespace
-                            )
+                                store.send(.dismissStationDetails)
+                            }
                         )
+                        .presentationDetents([.height(250)])
+                        .presentationDragIndicator(.hidden)
                     }
-                }
-//                .animation(.spring(), value: viewStore.selectedStation)
             }
         }
     }

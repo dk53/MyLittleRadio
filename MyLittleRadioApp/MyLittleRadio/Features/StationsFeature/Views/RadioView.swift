@@ -5,44 +5,42 @@ struct StationView: View {
     private let title: String
     private let showMusicIcon: Bool
     private let color: UIColor?
-    private let animation: AnimationIDs
-
-    init(title: String, showMusicIcon: Bool, color: UIColor? = nil, animation: AnimationIDs) {
+    private let isPlaying: Bool
+    
+    init(title: String,
+         showMusicIcon: Bool,
+         color: UIColor? = nil,
+         isPlaying: Bool) {
         self.title = title
         self.showMusicIcon = showMusicIcon
         self.color = color
-        self.animation = animation
+        self.isPlaying = isPlaying
     }
-
+    
     var body: some View {
         WithPerceptionTracking {
-            VStack {
-                let color = color ?? .gray
-                ZStack {
-                    RoundedRectangle(cornerRadius: 10)
-                        .fill(Color(color))
-                        .frame(height: 100)
-                        .accessibilityHidden(true)
-                        .ifLet(animation.namespace) { view, namespace in
-                            view.matchedGeometryEffect(id: animation.background, in: namespace)
-                        }
-
+            RoundedRectangle(cornerRadius: 10)
+                .fill(Color(color ?? .gray))
+                .frame(minHeight: 100)
+                .overlay(
                     HStack {
+                        if isPlaying {
+                            AnimatedBarView() // Show animated bar when playing
+                        }
+                        
                         Text(title)
                             .font(.headline)
-                            .foregroundColor(color.isLight ? .black : .white)
+                            .foregroundColor((color?.isLight ?? false) ? .black : .white)
                             .accessibilityLabel("Station name: \(title)")
-                            .ifLet(animation.namespace) { view, namespace in
-                                view.matchedGeometryEffect(id: animation.text, in: namespace)
-                            }
+                        
                         if showMusicIcon {
                             Image(systemName: "music.note")
-                                .foregroundColor(color.isLight ? .black : .white)
+                                .foregroundColor((color?.isLight ?? false) ? .black : .white)
                         }
                     }
-                    .accessibilityElement(children: .combine)
-                }
-            }
+                        .padding(.horizontal, 10)
+                )
+                .accessibilityHidden(true)
         }
     }
 }

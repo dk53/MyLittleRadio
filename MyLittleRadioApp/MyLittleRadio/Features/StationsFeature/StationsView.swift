@@ -7,65 +7,62 @@ struct StationsView: View {
 
     @Perception.Bindable private var store: StoreOf<StationsFeature>
     @State var selectedStation: Station?
-    private let animationNamespace: Namespace.ID?
 
     init(store: StoreOf<StationsFeature>,
-         selectedStation: Station? = nil,
-         animationNamespace: Namespace.ID? = nil) {
+         selectedStation: Station? = nil) {
         self.store = store
         self.selectedStation = selectedStation
-        self.animationNamespace = animationNamespace
     }
 
     var body: some View {
         WithPerceptionTracking {
-            WithViewStore(store, observe: { $0 }) { viewStore in
-                ZStack {
-                    stationList(viewStore: viewStore)
-                    loadingIndicator
-                }
-                .alert($store.scope(state: \.alert, action: \.alert))
-                .task {
-                    viewStore.send(.fetchStations)
-                }
-                .navigationTitle("Stations")
-                .navigationBarTitleDisplayMode(.automatic)
-                .onChange(of: selectedStation) { newValue in
-                    //TODO will remove later
-                    if let station = newValue {
-                        print("Selected Station: \(station.title)")
-                    }
-                }
+            ZStack {
+                stationList
+                loadingIndicator
             }
+            .alert($store.scope(state: \.alert, action: \.alert))
+            .task {
+                store.send(.fetchStations)
+            }
+            .navigationTitle("Stations")
+            .navigationBarTitleDisplayMode(.automatic)
         }
     }
 
     // MARK: - Components
 
     @ViewBuilder
-    private func stationList(viewStore: ViewStoreOf<StationsFeature>) -> some View {
-        WithPerceptionTracking {
-            ScrollView {
-                LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 16) {
-                    ForEach(viewStore.stations) { station in
-                        StationView(
-                            title: station.shortTitle,
-                            showMusicIcon: station.isMusical,
-                            color: station.colors.primary.toColor,
-                            animation: AnimationIDs(
-                                textId: station.title,
-                                backgroundId: "\(station.title)_background",
-                                namespace: animationNamespace
-                            )
-                        )
-                        .zIndex(viewStore.selectedStation?.id == station.id ? 100 : 0)
-                        .onTapGesture {
-                            _ = viewStore.send(.selectStation(station))
-                        }
+    var stationList: some View {
+        ScrollView {
+            LazyVGrid(
+                columns: [
+                    GridItem(.flexible()),
+                    GridItem(.flexible())
+                ],
+                spacing: 16
+            ) {
+                WithPerceptionTracking {
+                    ForEach(store.stations) { station in
+                        let isPlaying = store.playingStation == station
+                        stationView(station, isPlaying: isPlaying)
                     }
                 }
-                .padding(.horizontal)
             }
+            .padding(.horizontal)
+        }
+    }
+
+    @ViewBuilder
+    func stationView(_ station: Station, isPlaying: Bool) -> some View {
+        StationView(
+            title: station.shortTitle,
+            showMusicIcon: station.isMusical,
+            color: station.colors.primary.toColor,
+            isPlaying: isPlaying
+        )
+        .zIndex(store.selectedStation?.id == station.id ? 10 : 0)
+        .onTapGesture {
+            store.send(.selectStation(station))
         }
     }
 
