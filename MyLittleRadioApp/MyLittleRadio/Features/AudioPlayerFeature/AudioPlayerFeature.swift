@@ -13,11 +13,8 @@ struct AudioPlayerFeature {
 
     enum Action: Equatable {
         case playPauseTapped
-        case stopPlayback
         case setStationUrl(URL)
         case playerStatusChanged(isPlaying: Bool)
-        case loadingStarted
-        case loadingFinished
     }
 
     @Dependency(\.audioPlayerClient)
@@ -40,27 +37,12 @@ struct AudioPlayerFeature {
                 }
                 return .none
 
-            case .stopPlayback:
-                return .run { send in
-                    await audioPlayerClient.stop()
-                    await send(.playerStatusChanged(isPlaying: false))
-                }
-
             case let .setStationUrl(url):
                 state.currentStationUrl = url
                 return .none
 
             case let .playerStatusChanged(isPlaying):
                 state.isPlaying = isPlaying
-                return .none
-
-            case .loadingStarted:
-                state.isLoading = true
-                return .none
-
-            case .loadingFinished:
-                state.isLoading = false
-                state.isPlaying = true
                 return .none
             }
         }

@@ -10,6 +10,7 @@ struct StationsFeature {
         var stations: [Station] = []
         var selectedStation: Station? = nil
         var isLoading: Bool = false
+        var playingStation: Station?
         @Presents var alert: AlertState<Action.Alert>?
     }
 
@@ -22,8 +23,8 @@ struct StationsFeature {
 
         @CasePathable
         enum Alert: Equatable {
-              case retryButtonTapped
-          }
+            case retryButtonTapped
+        }
     }
 
     // MARK: - Dependencies

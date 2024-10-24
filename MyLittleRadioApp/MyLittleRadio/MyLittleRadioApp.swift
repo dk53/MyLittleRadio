@@ -7,18 +7,16 @@ import Dependencies
 
 @main
 struct MyLittleRadioApp: App {
-    
+
     var body: some Scene {
         WindowGroup {
+            WithPerceptionTracking {
                 NavigationStack {
                     AppView(
-                        store: Store(
-                            initialState: AppFeature.State(stationsFeature: .init(), isDetailViewPresented: false)) {
-                                AppFeature()
-                            }
+                        store: Store(initialState: AppFeature.State()) { AppFeature() }
                     )
+                }
             }
         }
     }
 }
-

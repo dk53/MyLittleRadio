@@ -20,7 +20,7 @@ struct StationDetailsFeature {
         Reduce<State, Action> { state, action in
             switch action {
             case .togglePlayPause:
-                state.isPlaying = !state.isPlaying
+                state.isPlaying.toggle()
                 return .send(.audioPlayer(.playPauseTapped))
             case .audioPlayer(_):
                 return .none
