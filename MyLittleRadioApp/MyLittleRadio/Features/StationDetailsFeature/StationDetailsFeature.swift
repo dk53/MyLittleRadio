@@ -7,11 +7,13 @@ struct StationDetailsFeature {
     struct State: Equatable {
         var selectedStation: Station?
         var isPlaying: Bool = false
+        var audioPlayer: AudioPlayerFeature.State?
     }
 
     @CasePathable
     enum Action {
         case togglePlayPause
+        case audioPlayer(AudioPlayerFeature.Action)
     }
 
     var body: some ReducerOf<Self> {
@@ -19,6 +21,8 @@ struct StationDetailsFeature {
             switch action {
             case .togglePlayPause:
                 state.isPlaying = !state.isPlaying
+                return .send(.audioPlayer(.playPauseTapped))
+            case .audioPlayer(_):
                 return .none
             }
         }

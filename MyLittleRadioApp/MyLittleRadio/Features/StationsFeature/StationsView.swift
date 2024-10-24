@@ -17,10 +17,6 @@ struct StationsView: View {
         self.animationNamespace = animationNamespace
     }
 
-    func test(viewStore: StoreOf<StationsFeature>, station: Station) {
-        viewStore.send(.selectStation(station))
-    }
-
     var body: some View {
         WithPerceptionTracking {
             WithViewStore(store, observe: { $0 }) { viewStore in
@@ -62,9 +58,9 @@ struct StationsView: View {
                                 namespace: animationNamespace
                             )
                         )
-                        .zIndex(viewStore.selectedStation?.id == station.id ? 10 : 0)
+                        .zIndex(viewStore.selectedStation?.id == station.id ? 100 : 0)
                         .onTapGesture {
-                            viewStore.send(.selectStation(station))
+                            _ = viewStore.send(.selectStation(station))
                         }
                     }
                 }

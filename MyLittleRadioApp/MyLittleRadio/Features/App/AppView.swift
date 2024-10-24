@@ -2,6 +2,7 @@ import SwiftUI
 import ComposableArchitecture
 
 struct AppView: View {
+
     @Perception.Bindable var store: StoreOf<AppFeature>
     @Namespace private var animationNamespace
     
@@ -19,7 +20,7 @@ struct AppView: View {
                     )
                     .allowsHitTesting(!viewStore.isDetailViewPresented)
                     .blur(radius: viewStore.isDetailViewPresented ? 10 : 0)
-                    
+
                     if let selectedStation = viewStore.selectedStation {
                         StationDetailsView(
                             store: store.scope(state: \.stationDetailsFeature, action: \.stationDetailsFeature),
@@ -31,13 +32,9 @@ struct AppView: View {
                                 namespace: animationNamespace
                             )
                         )
-                        .frame(width: 300, height: 300)
-                        .cornerRadius(20)
-                        .shadow(radius: 10)
-                        .zIndex(1)
                     }
                 }
-                .animation(.spring(), value: viewStore.selectedStation)
+//                .animation(.spring(), value: viewStore.selectedStation)
             }
         }
     }
