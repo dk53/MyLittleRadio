@@ -19,7 +19,7 @@ struct StationDetailsView: View {
         self.animationNamespace = animationNamespace
         self.animationIDs = animationIDs
     }
-    
+
     var body: some View {
         WithPerceptionTracking {
             WithViewStore(store, observe: { $0 }) { viewStore in
@@ -38,15 +38,14 @@ struct StationDetailsView: View {
                             .padding(.top, 16)
 
                             Text(selectedStation.shortTitle)
-                                .font(.largeTitle)
+                                .font(.headline)
                                 .padding()
                                 .frame(maxWidth: .infinity)
                                 .multilineTextAlignment(.center)
                                 .foregroundColor(selectedStation.colors.primary.toColor?.isLight ?? true ? .black : .white)
-                                .ifLet(animationNamespace) { view, namespace in
-                                    view.matchedGeometryEffect(id: animationIDs.text, in: namespace)
-                                }
-
+//                                .ifLet(animationNamespace) { view, namespace in
+//                                    view.matchedGeometryEffect(id: animationIDs.text, in: namespace)
+//                                }
 
                             Button(action: {
                                 viewStore.send(.togglePlayPause)
@@ -60,11 +59,12 @@ struct StationDetailsView: View {
                             Spacer()
                         }
                     }
+                    .cornerRadius(20)
                     .background(Color(selectedStation.colors.primary.toColor ?? .gray))
                     .frame(width: 300, height: 300)
-                    .ifLet(animationNamespace) { view, namespace in
-                        view.matchedGeometryEffect(id: animationIDs.background, in: namespace)
-                    }
+//                    .ifLet(animationNamespace) { view, namespace in
+//                        view.matchedGeometryEffect(id: animationIDs.background, in: namespace)
+//                    }
                 }
             }
         }

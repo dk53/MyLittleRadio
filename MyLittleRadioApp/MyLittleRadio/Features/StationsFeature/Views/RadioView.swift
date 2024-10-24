@@ -6,14 +6,14 @@ struct StationView: View {
     private let showMusicIcon: Bool
     private let color: UIColor?
     private let animation: AnimationIDs
-    
+
     init(title: String, showMusicIcon: Bool, color: UIColor? = nil, animation: AnimationIDs) {
         self.title = title
         self.showMusicIcon = showMusicIcon
         self.color = color
         self.animation = animation
     }
-    
+
     var body: some View {
         WithPerceptionTracking {
             VStack {
@@ -26,7 +26,7 @@ struct StationView: View {
                         .ifLet(animation.namespace) { view, namespace in
                             view.matchedGeometryEffect(id: animation.background, in: namespace)
                         }
-                    
+
                     HStack {
                         Text(title)
                             .font(.headline)

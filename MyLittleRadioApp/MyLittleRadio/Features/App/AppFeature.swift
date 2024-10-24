@@ -1,3 +1,4 @@
+import Foundation
 import ComposableArchitecture
 
 @Reducer
@@ -7,6 +8,7 @@ struct AppFeature {
     struct State: Equatable {
         var stationsFeature: StationsFeature.State = StationsFeature.State()
         var stationDetailsFeature: StationDetailsFeature.State = StationDetailsFeature.State()
+        var audioPlayerFeature: AudioPlayerFeature.State = AudioPlayerFeature.State()
 
         var isDetailViewPresented: Bool = false
         var selectedStation: Station?
@@ -16,6 +18,8 @@ struct AppFeature {
     enum Action {
         case stationsFeature(StationsFeature.Action)
         case stationDetailsFeature(StationDetailsFeature.Action)
+        case audioPlayerFeature(AudioPlayerFeature.Action)
+
         case dismissStationDetails
     }
 
@@ -28,20 +32,31 @@ struct AppFeature {
              StationDetailsFeature()
          }
 
+        Scope(state: \.audioPlayerFeature, action: \.audioPlayerFeature) {
+            AudioPlayerFeature()
+        }
+
         Reduce<State, Action> { state, action in
             switch action {
             case let .stationsFeature(.selectStation(station)):
                 state.selectedStation = station
                 state.isDetailViewPresented = true
-                state.stationDetailsFeature = StationDetailsFeature.State(selectedStation: station)
-                return .none
+                state.stationDetailsFeature = StationDetailsFeature.State(
+                    selectedStation: station,
+                    isPlaying: state.audioPlayerFeature.isPlaying
+                )
+                return .send(.audioPlayerFeature(.setStationUrl(URL(string: station.streamUrl)!)))
             case .stationsFeature:
                 return .none
-            case .stationDetailsFeature(_):
-                return .none
+            case .stationDetailsFeature(.togglePlayPause):
+                return .send(.audioPlayerFeature(.playPauseTapped))
             case .dismissStationDetails:
                 state.selectedStation = nil
                 state.isDetailViewPresented = false
+                return .none
+            case .audioPlayerFeature(_):
+                return .none
+            case .stationDetailsFeature(.audioPlayer(_)):
                 return .none
             }
         }

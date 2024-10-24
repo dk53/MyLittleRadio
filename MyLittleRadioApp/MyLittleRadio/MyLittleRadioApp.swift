@@ -10,7 +10,6 @@ struct MyLittleRadioApp: App {
     
     var body: some Scene {
         WindowGroup {
-            WithPerceptionTracking {
                 NavigationStack {
                     AppView(
                         store: Store(
@@ -18,7 +17,6 @@ struct MyLittleRadioApp: App {
                                 AppFeature()
                             }
                     )
-                }
             }
         }
     }
