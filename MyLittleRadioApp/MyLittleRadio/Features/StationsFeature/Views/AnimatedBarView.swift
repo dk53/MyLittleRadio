@@ -8,7 +8,7 @@ struct AnimatedBarView: View {
     private var animation: Animation {
         return .linear(duration: 0.5).repeatForever()
     }
-    
+
     var body: some View {
         WithPerceptionTracking {
             HStack(spacing: 4) {

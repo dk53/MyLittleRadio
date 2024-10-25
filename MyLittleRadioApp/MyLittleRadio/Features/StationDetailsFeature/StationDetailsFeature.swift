@@ -22,7 +22,7 @@ struct StationDetailsFeature {
             case .togglePlayPause:
                 state.isPlaying.toggle()
                 return .send(.audioPlayer(.playPauseTapped))
-            case .audioPlayer(_):
+            case .audioPlayer:
                 return .none
             }
         }

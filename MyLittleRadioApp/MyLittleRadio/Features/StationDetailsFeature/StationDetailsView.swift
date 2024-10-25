@@ -17,8 +17,10 @@ struct StationDetailsView: View {
     var body: some View {
         WithPerceptionTracking {
             if let selectedStation = store.selectedStation {
+                let backgroundColor = selectedStation.colors.primary.toColor
+                let foregroundColor: Color = backgroundColor.isLight ? .black : .white
                 Rectangle()
-                    .fill(Color(selectedStation.colors.primary.toColor ?? .gray))
+                    .fill(backgroundColor)
                     .overlay(
                         VStack {
                             HStack {
@@ -26,28 +28,26 @@ struct StationDetailsView: View {
                                     .font(.title)
                                     .padding()
                                     .multilineTextAlignment(.center)
-                                    .foregroundColor(selectedStation.colors.primary.toColor?.isLight ?? true ? .black : .white)
+                                    .foregroundColor(foregroundColor)
 
                                 Spacer()
 
                                 Button(action: onDismiss) {
                                     Image(systemName: "xmark")
-                                        .foregroundColor(selectedStation.colors.primary.toColor?.isLight ?? true ? .black : .white)
+                                        .foregroundColor(foregroundColor)
                                         .padding()
                                 }
                             }
                             .padding(.top, 16)
-
                             Button(action: {
                                 store.send(.togglePlayPause)
-                            }) {
+                            }, label: {
                                 Image(systemName: store.isPlaying ? "pause.circle.fill" : "play.circle.fill")
                                     .resizable()
                                     .frame(width: 60, height: 60)
-                                    .foregroundColor(selectedStation.colors.primary.toColor?.isLight ?? true ? .black : .white)
+                                    .foregroundColor(foregroundColor)
                                     .padding(.top, 20)
-                            }
-
+                            })
                             Spacer()
                         } .padding()
                     )

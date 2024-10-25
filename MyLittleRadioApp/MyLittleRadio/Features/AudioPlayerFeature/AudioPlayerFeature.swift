@@ -36,11 +36,9 @@ struct AudioPlayerFeature {
                     }
                 }
                 return .none
-
             case let .setStationUrl(url):
                 state.currentStationUrl = url
                 return .none
-
             case let .playerStatusChanged(isPlaying):
                 state.isPlaying = isPlaying
                 return .none

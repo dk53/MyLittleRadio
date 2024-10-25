@@ -8,10 +8,10 @@ struct StationsFeature {
     @ObservableState
     struct State: Equatable {
         var stations: [Station] = []
-        var selectedStation: Station? = nil
+        var selectedStation: Station?
         var isLoading: Bool = false
         var playingStation: Station?
-        @Presents var alert: AlertState<Action.Alert>?
+        @Presents var alert: AlertState<Alert>?
     }
 
     enum Action {
@@ -20,11 +20,11 @@ struct StationsFeature {
         case alert(PresentationAction<Alert>)
         case selectStation(Station)
         case deselect(Station)
+    }
 
-        @CasePathable
-        enum Alert: Equatable {
-            case retryButtonTapped
-        }
+    @CasePathable
+    enum Alert: Equatable {
+        case retryButtonTapped
     }
 
     // MARK: - Dependencies
@@ -45,13 +45,11 @@ struct StationsFeature {
                         await send(.stationsResponse(.failure(error)))
                     }
                 }
-                
             case let .stationsResponse(.success(stations)):
                 state.isLoading = false
                 state.stations = stations
-                
-                return .none
 
+                return .none
             case let .stationsResponse(.failure(error)):
                 state.isLoading = false
                 state.alert = AlertState {
@@ -65,18 +63,14 @@ struct StationsFeature {
                 }
 
                 return .none
-
             case .alert(.presented(.retryButtonTapped)):
                 return .send(.fetchStations)
-
             case .alert:
-                 return .none
-
+                return .none
             case .selectStation(let station):
                 state.selectedStation = station
                 return .none
-
-            case .deselect(_):
+            case .deselect:
                 state.selectedStation = nil
                 return .none
             }

@@ -54,7 +54,7 @@ struct StationsView: View {
 
     @ViewBuilder
     func stationView(_ station: Station, isPlaying: Bool) -> some View {
-        StationView(
+        RadioView(
             title: station.shortTitle,
             showMusicIcon: station.isMusical,
             color: station.colors.primary.toColor,
