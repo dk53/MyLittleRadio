@@ -65,3 +65,10 @@ struct Station: Codable, Equatable, Identifiable, Hashable {
         self.assets = assets
     }
 }
+
+extension Station {
+
+    var url: URL? {
+        return URL(string: streamUrl)
+    }
+}
