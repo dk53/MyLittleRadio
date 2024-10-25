@@ -29,8 +29,8 @@ struct AppFeature {
         }
 
         Scope(state: \.stationDetailsFeature, action: \.stationDetailsFeature) {
-             StationDetailsFeature()
-         }
+            StationDetailsFeature()
+        }
 
         Scope(state: \.audioPlayerFeature, action: \.audioPlayerFeature) {
             AudioPlayerFeature()
@@ -55,12 +55,15 @@ struct AppFeature {
                 state.isDetailViewPresented = false
                 return .none
             case .audioPlayerFeature(.playPauseTapped):
-                state.stationsFeature.playingStation = state.stationDetailsFeature.isPlaying ? state.selectedStation : nil
+                state.stationsFeature.playingStation = state.stationDetailsFeature.isPlaying ?
+                state.selectedStation :
+                nil
                 return .none
-            case .stationDetailsFeature(_):
+            case .stationDetailsFeature:
                 return .none
-            case .audioPlayerFeature(_):
+            case .audioPlayerFeature:
                 return .none
-            }        }
+            }
+        }
     }
 }

@@ -43,7 +43,7 @@ struct Station: Codable, Equatable, Identifiable, Hashable {
          title: String,
          brandId: String,
          hasTimeshift: Bool,
-         shortTitle: String ,
+         shortTitle: String,
          type: RadioType,
          streamUrl: String,
          analytics: Analytics,

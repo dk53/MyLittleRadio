@@ -8,15 +8,16 @@ struct AudioPlayerClient {
     var stop: @Sendable () async -> Void
 }
 
+private enum AudioPlayerClientKey: DependencyKey {
+    static let liveValue: AudioPlayerClient = .live()
+    static let testValue: AudioPlayerClient = .mock
+}
+
 extension DependencyValues {
     var audioPlayerClient: AudioPlayerClient {
         get { self[AudioPlayerClientKey.self] }
         set { self[AudioPlayerClientKey.self] = newValue }
     }
-}
-
-private enum AudioPlayerClientKey: DependencyKey {
-    static let liveValue: AudioPlayerClient = .live()
 }
 
 extension AudioPlayerClient {

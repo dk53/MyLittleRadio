@@ -1,46 +1,48 @@
 import SwiftUI
 import ComposableArchitecture
 
-struct StationView: View {
+struct RadioView: View {
     private let title: String
     private let showMusicIcon: Bool
-    private let color: UIColor?
+    private let color: Color
     private let isPlaying: Bool
-    
-    init(title: String,
-         showMusicIcon: Bool,
-         color: UIColor? = nil,
-         isPlaying: Bool) {
+
+    init(
+        title: String,
+        showMusicIcon: Bool = false,
+        color: Color = .gray,
+        isPlaying: Bool = false
+    ) {
         self.title = title
         self.showMusicIcon = showMusicIcon
         self.color = color
         self.isPlaying = isPlaying
     }
-    
+
     var body: some View {
-        WithPerceptionTracking {
-            RoundedRectangle(cornerRadius: 10)
-                .fill(Color(color ?? .gray))
-                .frame(minHeight: 100)
-                .overlay(
-                    HStack {
-                        if isPlaying {
-                            AnimatedBarView() // Show animated bar when playing
-                        }
-                        
-                        Text(title)
-                            .font(.headline)
-                            .foregroundColor((color?.isLight ?? false) ? .black : .white)
-                            .accessibilityLabel("Station name: \(title)")
-                        
-                        if showMusicIcon {
-                            Image(systemName: "music.note")
-                                .foregroundColor((color?.isLight ?? false) ? .black : .white)
-                        }
-                    }
-                        .padding(.horizontal, 10)
-                )
-                .accessibilityHidden(true)
+        RoundedRectangle(cornerRadius: 10)
+            .fill(color)
+            .frame(minHeight: 100)
+            .overlay(contentOverlay)
+            .accessibilityElement(children: .combine)
+            .accessibilityLabel(Text("Station name: \(title)"))
+    }
+
+    @ViewBuilder
+    private var contentOverlay: some View {
+        HStack {
+            if isPlaying {
+                AnimatedBarView()
+            }
+            Text(title)
+                .font(.headline)
+                .foregroundColor(color.isLight ? .black : .white)
+                .padding(.leading, isPlaying ? 5 : 0)
+
+            if showMusicIcon {
+                Image(systemName: "music.note")
+                    .foregroundColor(color.isLight ? .black : .white)
+            }
         }
     }
 }

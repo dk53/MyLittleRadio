@@ -31,6 +31,7 @@
 		4D7C9DD72CC85222004149F9 /* Exceptions for "MyLittleRadioTests" folder in "MyLittleRadioTests" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				AppFeatureTests.swift,
 				AudioPlayerFeatureTests/AudioPlayerFeatureTests.swift,
 				"Mocks/Station+Mocks.swift",
 				StationDetailsFeatureTests/StationDetailsFeatureTests.swift,
@@ -44,6 +45,7 @@
 		4D7C9DE22CC85278004149F9 /* Exceptions for "MyLittleRadioTests" folder in "MyLittleRadio" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				AppFeatureTests.swift,
 				AudioPlayerFeatureTests/AudioPlayerFeatureTests.swift,
 				"Mocks/Station+Mocks.swift",
 				StationDetailsFeatureTests/StationDetailsFeatureTests.swift,
@@ -136,6 +138,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				4DA4775B2CCBA1DF00AA6645 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				06AD00FF2CC10D020093665F /* MyLittleRadio */,
@@ -201,6 +204,7 @@
 			packageReferences = (
 				06AD012B2CC10D590093665F /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
 				4DCD8D9E2CC8558B000B1759 /* XCRemoteSwiftPackageReference "ios-snapshot-test-case" */,
+				4DA477592CCBA1C700AA6645 /* XCRemoteSwiftPackageReference "SwiftLint" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 06AD00FE2CC10D020093665F /* Products */;
@@ -252,6 +256,10 @@
 			isa = PBXTargetDependency;
 			target = 06AD00FC2CC10D020093665F /* MyLittleRadio */;
 			targetProxy = 06AD010F2CC10D030093665F /* PBXContainerItemProxy */;
+		};
+		4DA4775B2CCBA1DF00AA6645 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 4DA4775A2CCBA1DF00AA6645 /* SwiftLintBuildToolPlugin */;
 		};
 /* End PBXTargetDependency section */
 
@@ -539,6 +547,14 @@
 				minimumVersion = 1.15.1;
 			};
 		};
+		4DA477592CCBA1C700AA6645 /* XCRemoteSwiftPackageReference "SwiftLint" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/SwiftLint.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.57.0;
+			};
+		};
 		4DCD8D9E2CC8558B000B1759 /* XCRemoteSwiftPackageReference "ios-snapshot-test-case" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/uber/ios-snapshot-test-case.git";
@@ -554,6 +570,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 06AD012B2CC10D590093665F /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
 			productName = ComposableArchitecture;
+		};
+		4DA4775A2CCBA1DF00AA6645 /* SwiftLintBuildToolPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4DA477592CCBA1C700AA6645 /* XCRemoteSwiftPackageReference "SwiftLint" */;
+			productName = "plugin:SwiftLintBuildToolPlugin";
 		};
 		4DCD8D9F2CC8558B000B1759 /* iOSSnapshotTestCase */ = {
 			isa = XCSwiftPackageProductDependency;
