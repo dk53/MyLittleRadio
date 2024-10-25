@@ -7,13 +7,13 @@ struct AudioPlayerFeature {
     @ObservableState
     struct State: Equatable {
         var isPlaying: Bool = false
-        var currentStationUrl: URL?
+        var activeStation: Station?
         var isLoading: Bool = false
     }
 
     enum Action: Equatable {
         case playPauseTapped
-        case setStationUrl(URL)
+        case setActiveStation(station: Station)
         case playerStatusChanged(isPlaying: Bool)
     }
 
@@ -29,18 +29,21 @@ struct AudioPlayerFeature {
                         await audioPlayerClient.pause()
                         await send(.playerStatusChanged(isPlaying: false))
                     }
-                } else if let url = state.currentStationUrl {
+                } else if let url = state.activeStation?.url {
                     return .run { send in
                         await audioPlayerClient.playStream(url)
                         await send(.playerStatusChanged(isPlaying: true))
                     }
                 }
                 return .none
-            case let .setStationUrl(url):
-                state.currentStationUrl = url
-                return .none
             case let .playerStatusChanged(isPlaying):
                 state.isPlaying = isPlaying
+                return .none
+            case let .setActiveStation(station):
+                if station != state.activeStation {
+                    state.isPlaying = false
+                }
+                state.activeStation = station
                 return .none
             }
         }

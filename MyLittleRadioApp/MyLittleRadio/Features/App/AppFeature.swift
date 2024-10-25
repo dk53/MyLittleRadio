@@ -43,9 +43,10 @@ struct AppFeature {
                 state.isDetailViewPresented = true
                 state.stationDetailsFeature = StationDetailsFeature.State(
                     selectedStation: station,
-                    isPlaying: state.audioPlayerFeature.isPlaying
+                    isPlaying: state.stationsFeature.playingStation == station
                 )
-                return .send(.audioPlayerFeature(.setStationUrl(URL(string: station.streamUrl)!)))
+
+                return .send(.audioPlayerFeature(.setActiveStation(station: station)))
             case .stationsFeature:
                 return .none
             case .stationDetailsFeature(.togglePlayPause):
