@@ -9,8 +9,32 @@ final class AudioPlayerFeatureTests: XCTestCase {
     func testPlayPauseTappedWhenPlaying() async {
         let store = TestStore(
             initialState: AudioPlayerFeature.State(
+                isPlaying: false,
+                activeStation: .mock1
+            ),
+            reducer: { AudioPlayerFeature() }
+        )
+
+        let audioPlayerClientMock = AudioPlayerClient(
+            playStream: { _ in },
+            pause: { },
+            stop: { }
+        )
+
+        store.dependencies.audioPlayerClient = audioPlayerClientMock
+        await store.send(.playPauseTapped)
+
+        await store.receive(.playerStatusChanged(isPlaying: true)) {
+            $0.isPlaying = true
+        }
+    }
+
+    @MainActor
+    func testPauseTappedWhenPlaying() async {
+        let store = TestStore(
+            initialState: AudioPlayerFeature.State(
                 isPlaying: true,
-                currentStationUrl: URL(string: "https://victor.com/stream.mp3")
+                activeStation: .mock1
             ),
             reducer: { AudioPlayerFeature() }
         )
@@ -30,39 +54,16 @@ final class AudioPlayerFeatureTests: XCTestCase {
     }
 
     @MainActor
-    func testPauseTappedWhenPlaying() async {
-        let store = TestStore(
-            initialState: AudioPlayerFeature.State(
-                isPlaying: false,
-                currentStationUrl: URL(string: "https://victor.com/stream.mp3")
-            ),
-            reducer: { AudioPlayerFeature() }
-        )
-
-        let audioPlayerClientMock = AudioPlayerClient(
-            playStream: { _ in },
-            pause: { },
-            stop: { }
-        )
-
-        store.dependencies.audioPlayerClient = audioPlayerClientMock
-        await store.send(.playPauseTapped)
-
-        await store.receive(.playerStatusChanged(isPlaying: true)) {
-            $0.isPlaying = true
-        }
-    }
-
     func testSetStationUrl() async {
-        let store = await TestStore(
+        let store = TestStore(
             initialState: AudioPlayerFeature.State(),
             reducer: { AudioPlayerFeature() }
         )
 
-        let testUrl = URL(string: "https://victor.com/stream.mp3")!
+        let testStation = Station.mock1
 
-        await store.send(.setStationUrl(testUrl)) {
-            $0.currentStationUrl = testUrl
+        await store.send(.setActiveStation(station: testStation)) {
+            $0.activeStation = testStation
         }
     }
 }
