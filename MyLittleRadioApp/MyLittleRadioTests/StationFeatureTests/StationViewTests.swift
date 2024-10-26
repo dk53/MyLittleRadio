@@ -20,12 +20,11 @@ class StationsViewTests: FBSnapshotTestCase {
             reducer: { StationsFeature() }
         )
 
-        await MainActor.run {
-            let stationsView = StationsView(store: store)
-            snapshotTest(view: stationsView, id: "StationViewLoaded")
-        }
+        let stationsView = await StationsView(store: store)
+        await snapshotTest(view: stationsView, id: "StationViewLoaded")
     }
 
+    @MainActor
     func snapshotTest(view: some View, id: String) {
         let vc = UIHostingController(rootView: view)
 

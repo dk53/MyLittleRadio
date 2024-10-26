@@ -2,7 +2,7 @@
 
 import Foundation
 
-final class ApiManager {
+final class ApiManager: Sendable {
 
     func fetchStations() async throws -> [Station] {
         guard let url = URL(string: APIConfig.stationsEndpoint) else {
