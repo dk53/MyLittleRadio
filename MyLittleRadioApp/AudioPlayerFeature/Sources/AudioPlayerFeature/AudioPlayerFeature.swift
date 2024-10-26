@@ -1,27 +1,37 @@
+// AudioPlayerFeature.swift
 import ComposableArchitecture
 import AVFoundation
 import Core
 
 @Reducer
-struct AudioPlayerFeature {
+public struct AudioPlayerFeature : Sendable {
 
     @ObservableState
-    struct State: Equatable {
-        var isPlaying: Bool = false
-        var activeStation: Station?
-        var isLoading: Bool = false
+    public struct State: Equatable {
+        public var isPlaying: Bool = false
+        public var activeStation: Station?
+        public var isLoading: Bool = false
+
+        public init(isPlaying: Bool = false, activeStation: Station? = nil, isLoading: Bool = false) {
+            self.isPlaying = isPlaying
+            self.activeStation = activeStation
+            self.isLoading = isLoading
+        }
     }
 
-    enum Action: Equatable {
+    public enum Action: Equatable {
         case playPauseTapped
         case setActiveStation(station: Station)
         case playerStatusChanged(isPlaying: Bool)
     }
 
+    // To check is this a good way to init the feature ?
+    public init() { }
+
     @Dependency(\.audioPlayerClient)
     private var audioPlayerClient
 
-    var body: some ReducerOf<Self> {
+    public var body: some ReducerOf<Self> {
         Reduce { state, action in
             switch action {
             case .playPauseTapped:

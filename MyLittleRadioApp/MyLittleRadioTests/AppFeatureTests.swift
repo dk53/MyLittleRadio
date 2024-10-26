@@ -1,6 +1,7 @@
 import XCTest
 import ComposableArchitecture
 import Core
+import AudioPlayerFeature
 
 @testable import MyLittleRadio
 
@@ -22,7 +23,6 @@ class AppFeatureTests: XCTestCase {
         )
 
         store.exhaustivity = .off
-        store.dependencies.audioPlayerClient = .mock
 
         await store.send(.stationsFeature(.selectStation(station))) {
             $0.selectedStation = station
