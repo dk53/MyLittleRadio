@@ -25,7 +25,7 @@ let package = Package(
             ]),
         .testTarget(
             name: "AudioPlayerFeatureTests",
-            dependencies: ["AudioPlayerFeature"]
+            dependencies: ["AudioPlayerFeature", "Core"]
         ),
     ]
 )

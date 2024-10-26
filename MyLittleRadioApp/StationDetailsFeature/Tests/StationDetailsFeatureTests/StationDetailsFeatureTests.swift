@@ -3,8 +3,9 @@ import SwiftUI
 import ComposableArchitecture
 import XCTest
 import Core
+import AudioPlayerFeature
 
-@testable import MyLittleRadio
+@testable import StationDetailsFeature
 
 class StationsDetailsViewTests: FBSnapshotTestCase {
 

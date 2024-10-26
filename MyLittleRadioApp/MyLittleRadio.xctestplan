@@ -28,9 +28,30 @@
   "testTargets" : [
     {
       "target" : {
+        "containerPath" : "container:Core",
+        "identifier" : "CoreTests",
+        "name" : "CoreTests"
+      }
+    },
+    {
+      "target" : {
         "containerPath" : "container:MyLittleRadio.xcodeproj",
         "identifier" : "06AD010D2CC10D030093665F",
         "name" : "MyLittleRadioTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:StationDetailsFeature",
+        "identifier" : "StationDetailsFeatureTests",
+        "name" : "StationDetailsFeatureTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:AudioPlayerFeature",
+        "identifier" : "AudioPlayerFeatureTests",
+        "name" : "AudioPlayerFeatureTests"
       }
     }
   ],

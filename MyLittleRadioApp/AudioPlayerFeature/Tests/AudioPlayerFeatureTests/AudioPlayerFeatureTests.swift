@@ -1,9 +1,9 @@
 import XCTest
 import ComposableArchitecture
 import Foundation
+import Core
 
-@testable import Core
-@testable import MyLittleRadio
+@testable import AudioPlayerFeature
 
 final class AudioPlayerFeatureTests: XCTestCase {
 

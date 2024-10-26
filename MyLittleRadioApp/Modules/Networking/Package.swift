@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
     name: "Networking",
     platforms: [
-        .iOS(.v13)
+        .iOS(.v14)
     ],
     products: [
         .library(
@@ -15,7 +15,7 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/pointfreeco/swift-composable-architecture", from: "1.15.1"),
-        .package(name: "Core", path: "../Core")
+//        .package(name: "Core", path: "../Core")
     ],
     targets: [
         .target(
@@ -23,10 +23,6 @@ let package = Package(
             dependencies: [
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
             ]
-        ),
-        .testTarget(
-            name: "NetworkingTests",
-            dependencies: ["Networking"]
         ),
     ]
 )
