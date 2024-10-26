@@ -12,6 +12,7 @@
 		4DE291F52CCD05410065BFE4 /* Networking in Resources */ = {isa = PBXBuildFile; fileRef = 4DE291F42CCD05410065BFE4 /* Networking */; };
 		4DE291FE2CCD07560065BFE4 /* Core in Frameworks */ = {isa = PBXBuildFile; productRef = 4DE291FD2CCD07560065BFE4 /* Core */; };
 		4DE292002CCD391B0065BFE4 /* Networking in Frameworks */ = {isa = PBXBuildFile; productRef = 4DE291FF2CCD391B0065BFE4 /* Networking */; };
+		4DE292032CCD44130065BFE4 /* AudioPlayerFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 4DE292022CCD44130065BFE4 /* AudioPlayerFeature */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,6 +31,7 @@
 		4DBD47392CC8203400C4EB48 /* MyLittleRadio.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = MyLittleRadio.xctestplan; sourceTree = "<group>"; };
 		4DE291F42CCD05410065BFE4 /* Networking */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Networking; sourceTree = "<group>"; };
 		4DE291FC2CCD07370065BFE4 /* Core */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Core; sourceTree = SOURCE_ROOT; };
+		4DE292012CCD43AD0065BFE4 /* AudioPlayerFeature */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = AudioPlayerFeature; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -82,6 +84,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4DE292002CCD391B0065BFE4 /* Networking in Frameworks */,
+				4DE292032CCD44130065BFE4 /* AudioPlayerFeature in Frameworks */,
 				06AD012D2CC10D590093665F /* ComposableArchitecture in Frameworks */,
 				4DE291FE2CCD07560065BFE4 /* Core in Frameworks */,
 			);
@@ -122,6 +125,7 @@
 		4DE291F82CCD06550065BFE4 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				4DE292012CCD43AD0065BFE4 /* AudioPlayerFeature */,
 				4DE291FC2CCD07370065BFE4 /* Core */,
 				4DE291F42CCD05410065BFE4 /* Networking */,
 			);
@@ -160,6 +164,7 @@
 				06AD012C2CC10D590093665F /* ComposableArchitecture */,
 				4DE291FD2CCD07560065BFE4 /* Core */,
 				4DE291FF2CCD391B0065BFE4 /* Networking */,
+				4DE292022CCD44130065BFE4 /* AudioPlayerFeature */,
 			);
 			productName = MyLittleRadio;
 			productReference = 06AD00FD2CC10D020093665F /* MyLittleRadio.app */;
@@ -602,6 +607,10 @@
 		4DE291FF2CCD391B0065BFE4 /* Networking */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Networking;
+		};
+		4DE292022CCD44130065BFE4 /* AudioPlayerFeature */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = AudioPlayerFeature;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

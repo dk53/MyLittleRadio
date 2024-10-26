@@ -3,7 +3,7 @@ import ComposableArchitecture
 import Foundation
 
 @testable import Core
-@testable import AudioPlayerFeature
+@testable import MyLittleRadio
 
 final class AudioPlayerFeatureTests: XCTestCase {
 

@@ -2,10 +2,10 @@ import Foundation
 import AVFoundation
 import ComposableArchitecture
 
-struct AudioPlayerClient {
-    var playStream: @Sendable (URL) async -> Void
-    var pause: @Sendable () async -> Void
-    var stop: @Sendable () async -> Void
+public struct AudioPlayerClient: Sendable {
+    public var playStream: @Sendable (URL) async -> Void
+    public var pause: @Sendable () async -> Void
+    public var stop: @Sendable () async -> Void
 }
 
 private enum AudioPlayerClientKey: DependencyKey {
@@ -20,7 +20,7 @@ extension DependencyValues {
     }
 }
 
-extension AudioPlayerClient {
+private extension AudioPlayerClient {
     static func live() -> Self {
         let player = AVPlayer()
 

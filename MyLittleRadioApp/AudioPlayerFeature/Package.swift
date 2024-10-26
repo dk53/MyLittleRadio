@@ -4,14 +4,14 @@
 import PackageDescription
 
 let package = Package(
-    name: "Networking",
+    name: "AudioPlayerFeature",
     platforms: [
-        .iOS(.v13)
+        .iOS(.v14)
     ],
     products: [
         .library(
-            name: "Networking",
-            targets: ["Networking"]),
+            name: "AudioPlayerFeature",
+            targets: ["AudioPlayerFeature"]),
     ],
     dependencies: [
         .package(url: "https://github.com/pointfreeco/swift-composable-architecture", from: "1.15.1"),
@@ -19,14 +19,13 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "Networking",
+            name: "AudioPlayerFeature",
             dependencies: [
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
-            ]
-        ),
+            ]),
         .testTarget(
-            name: "NetworkingTests",
-            dependencies: ["Networking"]
+            name: "AudioPlayerFeatureTests",
+            dependencies: ["AudioPlayerFeature"]
         ),
     ]
 )
