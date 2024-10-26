@@ -1,6 +1,7 @@
 // Copyright © Radio France. All rights reserved.
 
 import Foundation
+import Core
 
 final class ApiManager: Sendable {
 

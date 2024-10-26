@@ -1,5 +1,6 @@
 import Foundation
 import ComposableArchitecture
+import Core
 
 @Reducer
 struct AppFeature {

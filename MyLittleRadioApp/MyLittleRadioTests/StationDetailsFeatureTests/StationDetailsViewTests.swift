@@ -1,9 +1,12 @@
 import XCTest
 import ComposableArchitecture
+import Core
+
 @testable import MyLittleRadio
 
 final class StationDetailsFeatureTests: XCTestCase {
 
+    @MainActor
     func testTogglePlayPause() async {
         let store = await TestStore(
             initialState: StationDetailsFeature.State(selectedStation: Station.mock1),

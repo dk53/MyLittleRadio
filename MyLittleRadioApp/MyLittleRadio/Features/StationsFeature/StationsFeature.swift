@@ -1,6 +1,7 @@
 // Copyright © Radio France. All rights reserved.
 
 import ComposableArchitecture
+import Core
 
 @Reducer
 struct StationsFeature {

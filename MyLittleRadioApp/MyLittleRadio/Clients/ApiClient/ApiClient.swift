@@ -2,6 +2,7 @@
 
 import Dependencies
 import DependenciesMacros
+import Core
 
 @DependencyClient
 struct ApiClient: Sendable {

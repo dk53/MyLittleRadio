@@ -1,5 +1,6 @@
 import ComposableArchitecture
 import AVFoundation
+import Core
 
 @Reducer
 struct AudioPlayerFeature {

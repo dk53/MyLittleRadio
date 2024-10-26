@@ -2,6 +2,7 @@ import iOSSnapshotTestCase
 import SwiftUI
 import ComposableArchitecture
 import XCTest
+import Core
 
 @testable import MyLittleRadio
 
