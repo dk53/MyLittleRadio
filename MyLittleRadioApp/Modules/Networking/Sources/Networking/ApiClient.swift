@@ -5,7 +5,7 @@ import DependenciesMacros
 import Core
 
 @DependencyClient
-struct ApiClient: Sendable {
+public struct ApiClient: Sendable {
 
-    var fetchStations: @Sendable () async throws -> [Station] = { [] }
+    public var fetchStations: @Sendable () async throws -> [Station] = { [] }
 }

@@ -11,6 +11,7 @@
 		4DCD8DA02CC8558B000B1759 /* iOSSnapshotTestCase in Frameworks */ = {isa = PBXBuildFile; productRef = 4DCD8D9F2CC8558B000B1759 /* iOSSnapshotTestCase */; };
 		4DE291F52CCD05410065BFE4 /* Networking in Resources */ = {isa = PBXBuildFile; fileRef = 4DE291F42CCD05410065BFE4 /* Networking */; };
 		4DE291FE2CCD07560065BFE4 /* Core in Frameworks */ = {isa = PBXBuildFile; productRef = 4DE291FD2CCD07560065BFE4 /* Core */; };
+		4DE292002CCD391B0065BFE4 /* Networking in Frameworks */ = {isa = PBXBuildFile; productRef = 4DE291FF2CCD391B0065BFE4 /* Networking */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,21 +57,11 @@
 			);
 			target = 06AD00FC2CC10D020093665F /* MyLittleRadio */;
 		};
-		4D85E16A2CC9683B005CCFF6 /* Exceptions for "MyLittleRadio" folder in "MyLittleRadio" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Info.plist,
-			);
-			target = 06AD00FC2CC10D020093665F /* MyLittleRadio */;
-		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		06AD00FF2CC10D020093665F /* MyLittleRadio */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				4D85E16A2CC9683B005CCFF6 /* Exceptions for "MyLittleRadio" folder in "MyLittleRadio" target */,
-			);
 			path = MyLittleRadio;
 			sourceTree = "<group>";
 		};
@@ -90,6 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DE292002CCD391B0065BFE4 /* Networking in Frameworks */,
 				06AD012D2CC10D590093665F /* ComposableArchitecture in Frameworks */,
 				4DE291FE2CCD07560065BFE4 /* Core in Frameworks */,
 			);
@@ -167,6 +159,7 @@
 			packageProductDependencies = (
 				06AD012C2CC10D590093665F /* ComposableArchitecture */,
 				4DE291FD2CCD07560065BFE4 /* Core */,
+				4DE291FF2CCD391B0065BFE4 /* Networking */,
 			);
 			productName = MyLittleRadio;
 			productReference = 06AD00FD2CC10D020093665F /* MyLittleRadio.app */;
@@ -337,6 +330,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -392,6 +386,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -413,7 +408,6 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = MyLittleRadio/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -455,7 +449,6 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = MyLittleRadio/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -605,6 +598,10 @@
 		4DE291FD2CCD07560065BFE4 /* Core */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Core;
+		};
+		4DE291FF2CCD391B0065BFE4 /* Networking */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Networking;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
