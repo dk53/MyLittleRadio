@@ -2,6 +2,7 @@ import Foundation
 import ComposableArchitecture
 import Core
 import AudioPlayerFeature
+import StationDetailsFeature
 
 @Reducer
 struct AppFeature {
