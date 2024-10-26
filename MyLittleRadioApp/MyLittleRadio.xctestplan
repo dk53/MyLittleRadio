@@ -35,6 +35,13 @@
     },
     {
       "target" : {
+        "containerPath" : "container:StationsFeature",
+        "identifier" : "StationsFeatureTests",
+        "name" : "StationsFeatureTests"
+      }
+    },
+    {
+      "target" : {
         "containerPath" : "container:MyLittleRadio.xcodeproj",
         "identifier" : "06AD010D2CC10D030093665F",
         "name" : "MyLittleRadioTests"
@@ -42,16 +49,16 @@
     },
     {
       "target" : {
-        "containerPath" : "container:StationDetailsFeature",
-        "identifier" : "StationDetailsFeatureTests",
-        "name" : "StationDetailsFeatureTests"
+        "containerPath" : "container:AudioPlayerFeature",
+        "identifier" : "AudioPlayerFeatureTests",
+        "name" : "AudioPlayerFeatureTests"
       }
     },
     {
       "target" : {
-        "containerPath" : "container:AudioPlayerFeature",
-        "identifier" : "AudioPlayerFeatureTests",
-        "name" : "AudioPlayerFeatureTests"
+        "containerPath" : "container:StationDetailsFeature",
+        "identifier" : "StationDetailsFeatureTests",
+        "name" : "StationDetailsFeatureTests"
       }
     }
   ],

@@ -2,7 +2,7 @@ import XCTest
 import Core
 import ComposableArchitecture
 
-@testable import MyLittleRadio
+@testable import StationsFeature
 
 final class StationsFeatureTests: XCTestCase {
 

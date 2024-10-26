@@ -5,18 +5,32 @@ import Core
 import Networking
 
 @Reducer
-struct StationsFeature {
+public struct StationsFeature: Sendable {
 
     @ObservableState
-    struct State: Equatable {
-        var stations: [Station] = []
-        var selectedStation: Station?
-        var isLoading: Bool = false
-        var playingStation: Station?
-        @Presents var alert: AlertState<Alert>?
+    public struct State: Equatable {
+        public var stations: [Station] = []
+        public var selectedStation: Station?
+        public var isLoading: Bool = false
+        public var playingStation: Station?
+        @Presents public var alert: AlertState<Alert>?
+
+        public init(
+            stations: [Station] = [],
+            selectedStation: Station? = nil,
+            isLoading: Bool = false,
+            playingStation: Station? = nil,
+            alert: AlertState<Alert>? = nil
+        ) {
+            self.stations = stations
+            self.selectedStation = selectedStation
+            self.isLoading = isLoading
+            self.playingStation = playingStation
+            self.alert = alert
+        }
     }
 
-    enum Action {
+    public enum Action {
         case fetchStations
         case stationsResponse(Result<[Station], Error>)
         case alert(PresentationAction<Alert>)
@@ -25,16 +39,18 @@ struct StationsFeature {
     }
 
     @CasePathable
-    enum Alert: Equatable {
+    public enum Alert: Equatable {
         case retryButtonTapped
     }
 
     // MARK: - Dependencies
 
+    public init() { }
+
     @Dependency(\.apiClient)
     var apiClient
 
-    var body: some ReducerOf<Self> {
+    public var body: some ReducerOf<Self> {
         Reduce<State, Action> { state, action in
             switch action {
             case .fetchStations:

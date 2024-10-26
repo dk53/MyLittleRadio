@@ -4,7 +4,7 @@ import ComposableArchitecture
 import Core
 import XCTest
 
-@testable import MyLittleRadio
+@testable import StationsFeature
 
 @MainActor
 class StationsViewTests: FBSnapshotTestCase {
