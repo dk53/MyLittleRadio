@@ -20,7 +20,7 @@ extension DependencyValues {
     }
 }
 
-private extension AudioPlayerClient {
+public extension AudioPlayerClient {
     static func live() -> Self {
         let player = AVPlayer()
 

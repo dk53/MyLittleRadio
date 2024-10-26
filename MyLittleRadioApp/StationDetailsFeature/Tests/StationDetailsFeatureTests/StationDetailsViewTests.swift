@@ -1,14 +1,15 @@
 import XCTest
 import ComposableArchitecture
 import Core
+import AudioPlayerFeature
 
-@testable import MyLittleRadio
+@testable import StationDetailsFeature
 
 final class StationDetailsFeatureTests: XCTestCase {
 
     @MainActor
     func testTogglePlayPause() async {
-        let store = await TestStore(
+        let store = TestStore(
             initialState: StationDetailsFeature.State(selectedStation: Station.mock1),
             reducer: { StationDetailsFeature() }
         )

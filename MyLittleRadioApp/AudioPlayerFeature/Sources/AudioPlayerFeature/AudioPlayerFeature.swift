@@ -4,7 +4,7 @@ import AVFoundation
 import Core
 
 @Reducer
-public struct AudioPlayerFeature : Sendable {
+public struct AudioPlayerFeature: Sendable {
 
     @ObservableState
     public struct State: Equatable {
