@@ -4,18 +4,18 @@ import SwiftUI
 import ComposableArchitecture
 import Core
 
-struct StationsView: View {
+public struct StationsView: View {
 
     @Perception.Bindable private var store: StoreOf<StationsFeature>
     @State var selectedStation: Station?
 
-    init(store: StoreOf<StationsFeature>,
+    public init(store: StoreOf<StationsFeature>,
          selectedStation: Station? = nil) {
         self.store = store
         self.selectedStation = selectedStation
     }
 
-    var body: some View {
+    public var body: some View {
         WithPerceptionTracking {
             ZStack {
                 stationList

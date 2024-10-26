@@ -14,6 +14,7 @@
 		4DE292002CCD391B0065BFE4 /* Networking in Frameworks */ = {isa = PBXBuildFile; productRef = 4DE291FF2CCD391B0065BFE4 /* Networking */; };
 		4DE292032CCD44130065BFE4 /* AudioPlayerFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 4DE292022CCD44130065BFE4 /* AudioPlayerFeature */; };
 		4DE2920C2CCD551E0065BFE4 /* StationDetailsFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 4DE2920B2CCD551E0065BFE4 /* StationDetailsFeature */; };
+		4DE292202CCD82B00065BFE4 /* StationsFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 4DE2921F2CCD82B00065BFE4 /* StationsFeature */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +35,7 @@
 		4DE291FC2CCD07370065BFE4 /* Core */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Core; sourceTree = SOURCE_ROOT; };
 		4DE292012CCD43AD0065BFE4 /* AudioPlayerFeature */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = AudioPlayerFeature; sourceTree = SOURCE_ROOT; };
 		4DE2920A2CCD54790065BFE4 /* StationDetailsFeature */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = StationDetailsFeature; sourceTree = SOURCE_ROOT; };
+		4DE2921E2CCD82180065BFE4 /* StationsFeature */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = StationsFeature; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -41,8 +43,6 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				AppFeatureTests.swift,
-				StationFeatureTests/StationFeatureTests.swift,
-				StationFeatureTests/StationViewTests.swift,
 			);
 			target = 06AD010D2CC10D030093665F /* MyLittleRadioTests */;
 		};
@@ -50,8 +50,6 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				AppFeatureTests.swift,
-				StationFeatureTests/StationFeatureTests.swift,
-				StationFeatureTests/StationViewTests.swift,
 			);
 			target = 06AD00FC2CC10D020093665F /* MyLittleRadio */;
 		};
@@ -81,6 +79,7 @@
 			files = (
 				4DE292002CCD391B0065BFE4 /* Networking in Frameworks */,
 				4DE292032CCD44130065BFE4 /* AudioPlayerFeature in Frameworks */,
+				4DE292202CCD82B00065BFE4 /* StationsFeature in Frameworks */,
 				06AD012D2CC10D590093665F /* ComposableArchitecture in Frameworks */,
 				4DE2920C2CCD551E0065BFE4 /* StationDetailsFeature in Frameworks */,
 				4DE291FE2CCD07560065BFE4 /* Core in Frameworks */,
@@ -122,6 +121,7 @@
 		4DE291F82CCD06550065BFE4 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				4DE2921E2CCD82180065BFE4 /* StationsFeature */,
 				4DE2920A2CCD54790065BFE4 /* StationDetailsFeature */,
 				4DE292012CCD43AD0065BFE4 /* AudioPlayerFeature */,
 				4DE291FC2CCD07370065BFE4 /* Core */,
@@ -164,6 +164,7 @@
 				4DE291FF2CCD391B0065BFE4 /* Networking */,
 				4DE292022CCD44130065BFE4 /* AudioPlayerFeature */,
 				4DE2920B2CCD551E0065BFE4 /* StationDetailsFeature */,
+				4DE2921F2CCD82B00065BFE4 /* StationsFeature */,
 			);
 			productName = MyLittleRadio;
 			productReference = 06AD00FD2CC10D020093665F /* MyLittleRadio.app */;
@@ -614,6 +615,10 @@
 		4DE2920B2CCD551E0065BFE4 /* StationDetailsFeature */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = StationDetailsFeature;
+		};
+		4DE2921F2CCD82B00065BFE4 /* StationsFeature */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = StationsFeature;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
