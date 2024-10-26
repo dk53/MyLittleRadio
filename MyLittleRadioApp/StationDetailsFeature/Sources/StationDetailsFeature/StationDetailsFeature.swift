@@ -3,29 +3,25 @@ import Core
 import AudioPlayerFeature
 
 @Reducer
-struct StationDetailsFeature: Reducer {
+public struct StationDetailsFeature: Reducer {
 
     @ObservableState
     public struct State: Equatable {
-        var selectedStation: Station?
-        var isPlaying: Bool = false
-        var audioPlayer: AudioPlayerFeature.State?
+        public var selectedStation: Station?
+        public var isPlaying: Bool = false
 
         public init(
             selectedStation: Station? = nil,
-            isPlaying: Bool = false,
-            audioPlayer: AudioPlayerFeature.State? = nil
+            isPlaying: Bool = false
         ) {
             self.selectedStation = selectedStation
             self.isPlaying = isPlaying
-            self.audioPlayer = audioPlayer
         }
     }
 
     @CasePathable
-    enum Action {
+    public enum Action {
         case togglePlayPause
-        case audioPlayer(AudioPlayerFeature.Action)
     }
 
     public init() { }
@@ -34,13 +30,11 @@ struct StationDetailsFeature: Reducer {
 //    use
   //  @Dependency(\.audioPlayerClient) private var audioPlayerClient
 
-    var body: some ReducerOf<Self> {
+    public var body: some ReducerOf<Self> {
         Reduce<State, Action> { state, action in
             switch action {
             case .togglePlayPause:
                 state.isPlaying.toggle()
-                return .send(.audioPlayer(.playPauseTapped))
-            case .audioPlayer:
                 return .none
             }
         }
