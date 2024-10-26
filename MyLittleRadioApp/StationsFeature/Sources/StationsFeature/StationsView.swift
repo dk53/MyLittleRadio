@@ -6,11 +6,25 @@ import Core
 
 public struct StationsView: View {
 
+    enum Constants {
+        static let navigationTitle = "Stations"
+
+        static let gridSpacing: CGFloat = 16
+        static let horizontalPadding: CGFloat = 16
+        static let gridColumns: [GridItem] = [
+            GridItem(.flexible()),
+            GridItem(.flexible())
+        ]
+
+        static let loadingScaleEffect: CGFloat = 0.5
+        static let loadingAnimation = Animation.easeInOut(duration: 0.5)
+    }
+
     @Perception.Bindable private var store: StoreOf<StationsFeature>
     @State var selectedStation: Station?
 
     public init(store: StoreOf<StationsFeature>,
-         selectedStation: Station? = nil) {
+                selectedStation: Station? = nil) {
         self.store = store
         self.selectedStation = selectedStation
     }
@@ -25,7 +39,7 @@ public struct StationsView: View {
             .task {
                 store.send(.fetchStations)
             }
-            .navigationTitle("Stations")
+            .navigationTitle(Constants.navigationTitle)
             .navigationBarTitleDisplayMode(.automatic)
         }
     }
@@ -36,11 +50,8 @@ public struct StationsView: View {
     var stationList: some View {
         ScrollView {
             LazyVGrid(
-                columns: [
-                    GridItem(.flexible()),
-                    GridItem(.flexible())
-                ],
-                spacing: 16
+                columns: Constants.gridColumns,
+                spacing: Constants.gridSpacing
             ) {
                 WithPerceptionTracking {
                     ForEach(store.stations) { station in
@@ -49,7 +60,7 @@ public struct StationsView: View {
                     }
                 }
             }
-            .padding(.horizontal)
+            .padding(.horizontal, Constants.horizontalPadding)
         }
     }
 
@@ -61,7 +72,6 @@ public struct StationsView: View {
             color: station.colors.primary.toColor,
             isPlaying: isPlaying
         )
-        .zIndex(store.selectedStation?.id == station.id ? 10 : 0)
         .onTapGesture {
             store.send(.selectStation(station))
         }
@@ -70,7 +80,7 @@ public struct StationsView: View {
     private var loadingIndicator: some View {
         ProgressView()
             .opacity(store.isLoading ? 1 : 0)
-            .scaleEffect(store.isLoading ? 1 : 0.5)
-            .animation(.easeInOut(duration: 0.5), value: store.isLoading)
+            .scaleEffect(store.isLoading ? 1 : Constants.loadingScaleEffect)
+            .animation(Constants.loadingAnimation, value: store.isLoading)
     }
 }
