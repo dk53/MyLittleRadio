@@ -2,7 +2,7 @@
 
 import Dependencies
 
-extension DependencyValues {
+public extension DependencyValues {
 
     var apiClient: ApiClient {
         get { self[ApiClient.self] }

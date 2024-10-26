@@ -2,6 +2,7 @@
 
 import ComposableArchitecture
 import Core
+import Networking
 
 @Reducer
 struct StationsFeature {
@@ -31,7 +32,7 @@ struct StationsFeature {
     // MARK: - Dependencies
 
     @Dependency(\.apiClient)
-    private var apiClient
+    var apiClient
 
     var body: some ReducerOf<Self> {
         Reduce<State, Action> { state, action in
