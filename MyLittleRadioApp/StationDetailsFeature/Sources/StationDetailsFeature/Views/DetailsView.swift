@@ -2,6 +2,7 @@ import SwiftUI
 import Core
 
 struct DetailsView: View {
+
     let selectedStation: Station
     let foregroundColor: Color
     let onDismiss: () -> Void
@@ -24,14 +25,17 @@ struct DetailsView: View {
                         togglePlayPause: togglePlayPause
                     )
                     Spacer()
-                }
-                .padding()
-            )
-            .ignoresSafeArea()
+                }.padding()
+            ).ignoresSafeArea()
     }
 }
 
 struct StationHeaderView: View {
+
+    enum Constants {
+        static let padding: CGFloat = 16
+    }
+
     let title: String
     let foregroundColor: Color
     let onDismiss: () -> Void
@@ -52,6 +56,6 @@ struct StationHeaderView: View {
                     .padding()
             }
         }
-        .padding(.top, 16)
+        .padding(.top, Constants.padding)
     }
 }
