@@ -1,5 +1,6 @@
 import XCTest
 import ComposableArchitecture
+import Core
 
 @testable import MyLittleRadio
 

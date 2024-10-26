@@ -1,5 +1,6 @@
 import SwiftUI
 import ComposableArchitecture
+import Core
 
 struct StationDetailsView: View {
     @Perception.Bindable var store: StoreOf<StationDetailsFeature>

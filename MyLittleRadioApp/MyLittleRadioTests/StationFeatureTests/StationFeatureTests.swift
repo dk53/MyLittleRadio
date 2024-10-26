@@ -1,12 +1,14 @@
 import XCTest
+import Core
 import ComposableArchitecture
 
 @testable import MyLittleRadio
 
 final class StationsFeatureTests: XCTestCase {
 
+    @MainActor
     func testFetchStationsSuccess() async throws {
-        let store = await TestStore(
+        let store = TestStore(
             initialState: StationsFeature.State(),
             reducer: { StationsFeature() }
         )
