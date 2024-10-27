@@ -7,8 +7,9 @@ struct MiniPlayerView: View {
         static let playPauseIconSize: CGFloat = 40
         static let textPaddingLeading: CGFloat = 16
         static let buttonPaddingTrailing: CGFloat = 16
-        static let viewHeight: CGFloat = 130
-        static let cornerRadius: CGFloat = 8
+        static let viewHeight: CGFloat = 90
+        static let cornerRadius: CGFloat = 20
+        static let shadowRadius: CGFloat = 12
     }
 
     let station: Station
@@ -34,8 +35,8 @@ struct MiniPlayerView: View {
         }
         .frame(height: Constants.viewHeight)
         .background(station.colors.primary.toColor)
-        .cornerRadius(20)
-        .shadow(radius: 12)
+        .cornerRadius(Constants.cornerRadius)
+        .shadow(radius: Constants.shadowRadius)
     }
 }
 
