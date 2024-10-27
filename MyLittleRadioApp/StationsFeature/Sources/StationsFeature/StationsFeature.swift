@@ -68,12 +68,12 @@ public struct StationsFeature: Sendable {
                         await send(.stationsResponse(.failure(error)))
                     }
                 }
-            case let .stationsResponse(.success(stations)):
+            case .stationsResponse(.success(let stations)):
                 state.isLoading = false
                 state.stations = stations
 
                 return .none
-            case let .stationsResponse(.failure(error)):
+            case .stationsResponse(.failure(let error)):
                 state.isLoading = false
                 state.alert = AlertState {
                     TextState("Error")
@@ -84,8 +84,8 @@ public struct StationsFeature: Sendable {
                 } message: {
                     TextState("Failed to fetch stations: \(error.localizedDescription)")
                 }
-
                 return .none
+
             case .alert(.presented(.retryButtonTapped)):
                 return .send(.fetchStations)
             case .alert:

@@ -25,10 +25,6 @@ public struct StationDetailsFeature: Reducer {
 
     public init() { }
 
-   // todo, check if it's better to add a state variable var audioPlayer: AudioPlayerFeature.State? or
-//    use
-  //  @Dependency(\.audioPlayerClient) private var audioPlayerClient
-
     public var body: some ReducerOf<Self> {
         Reduce<State, Action> { state, action in
             switch action {

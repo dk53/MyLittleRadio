@@ -63,7 +63,7 @@ struct AppFeature {
                 return .none
             case .audioPlayerFeature(.playerStatusChanged(let isPlaying)):
                 if let station = state.selectedStation {
-                    state.stationsFeature.activeStation = state.selectedStation
+                    state.stationsFeature.activeStation = station
                 }
                 state.stationsFeature.isPlaying = isPlaying
                 return .none

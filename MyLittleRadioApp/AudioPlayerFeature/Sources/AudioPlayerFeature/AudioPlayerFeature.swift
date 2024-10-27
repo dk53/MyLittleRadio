@@ -49,9 +49,7 @@ public struct AudioPlayerFeature: Sendable {
                 state.isPlaying = isPlaying
                 return .none
             case let .setActiveStation(station):
-                if station != state.activeStation {
-                    state.isPlaying = false
-                }
+                state.isPlaying = station == state.activeStation
                 state.activeStation = station
                 return .none
             }

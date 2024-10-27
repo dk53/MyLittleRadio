@@ -1,5 +1,4 @@
 import SwiftUI
-import ComposableArchitecture
 
 struct AnimatedBarView: View {
 
@@ -33,25 +32,23 @@ struct AnimatedBarView: View {
     }
 
     var body: some View {
-        WithPerceptionTracking {
-            HStack(spacing: Constants.barSpacing) {
-                bar(low: Constants.lowHeight1)
-                    .animation(animation.speed(Constants.speed1), value: drawingHeight)
-                bar(low: Constants.lowHeight2)
-                    .animation(animation.speed(Constants.speed2), value: drawingHeight)
-                bar(low: Constants.lowHeight3)
-                    .animation(animation.speed(Constants.speed3), value: drawingHeight)
-                bar(low: Constants.lowHeight4)
-                    .animation(animation.speed(Constants.speed4), value: drawingHeight)
-                bar(low: Constants.lowHeight5)
-                    .animation(animation.speed(Constants.speed3), value: drawingHeight)
-            }
-            .frame(width: Constants.frameWidth)
-            .onAppear {
-                drawingHeight.toggle()
-            }
-            .frame(height: Constants.frameHeight)
+        HStack(spacing: Constants.barSpacing) {
+            bar(low: Constants.lowHeight1)
+                .animation(animation.speed(Constants.speed1), value: drawingHeight)
+            bar(low: Constants.lowHeight2)
+                .animation(animation.speed(Constants.speed2), value: drawingHeight)
+            bar(low: Constants.lowHeight3)
+                .animation(animation.speed(Constants.speed3), value: drawingHeight)
+            bar(low: Constants.lowHeight4)
+                .animation(animation.speed(Constants.speed4), value: drawingHeight)
+            bar(low: Constants.lowHeight5)
+                .animation(animation.speed(Constants.speed3), value: drawingHeight)
         }
+        .frame(width: Constants.frameWidth)
+        .onAppear {
+            drawingHeight.toggle()
+        }
+        .frame(height: Constants.frameHeight)
     }
 
     private func bar(low: CGFloat = 0.0, high: CGFloat = 1.0) -> some View {
