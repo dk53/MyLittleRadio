@@ -1,18 +1,18 @@
 import SwiftUI
 
 struct RadioView: View {
-    
+
     enum Constants {
         static let cornerRadius: CGFloat = 10
         static let minHeight: CGFloat = 100
         static let leadingPaddingWithBar: CGFloat = 5
     }
-    
+
     private let title: String
     private let showMusicIcon: Bool
     private let color: Color
     private let isPlaying: Bool
-    
+
     init(
         title: String,
         showMusicIcon: Bool = false,
@@ -24,7 +24,7 @@ struct RadioView: View {
         self.color = color
         self.isPlaying = isPlaying
     }
-    
+
     var body: some View {
         RoundedRectangle(cornerRadius: Constants.cornerRadius)
             .fill(color)
@@ -33,7 +33,7 @@ struct RadioView: View {
             .accessibilityElement(children: .combine)
             .accessibilityLabel(Text("Station name: \(title)"))
     }
-    
+
     @ViewBuilder
     private var contentOverlay: some View {
         HStack {
@@ -44,7 +44,7 @@ struct RadioView: View {
                 .font(.headline)
                 .foregroundColor(color.isLight ? .black : .white)
                 .padding(.leading, isPlaying ? Constants.leadingPaddingWithBar : 0)
-            
+
             if showMusicIcon {
                 Image(systemName: "music.note")
                     .foregroundColor(color.isLight ? .black : .white)

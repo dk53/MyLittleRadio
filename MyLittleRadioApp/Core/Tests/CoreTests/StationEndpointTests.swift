@@ -5,7 +5,7 @@ import Foundation
 final class StationTests: XCTestCase {
 
     func testStationDecoding() throws {
-        let json = """
+        let json = Data("""
         {
           "stations": [
             {
@@ -28,7 +28,7 @@ final class StationTests: XCTestCase {
             }
           ]
         }
-        """.data(using: .utf8)!
+        """.utf8)
 
         let decodedResponse = try JSONDecoder().decode(StationsResponse.self, from: json)
         XCTAssertEqual(decodedResponse.stations.count, 1)

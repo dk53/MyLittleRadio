@@ -44,7 +44,8 @@ public struct PlayPauseButton: View {
         ZStack {
             if isPlaying {
                 Circle()
-                    .stroke(foregroundColor.opacity(Constants.primaryCircleOpacity), lineWidth: Constants.primaryLineWidth)
+                    .stroke(foregroundColor.opacity(Constants.primaryCircleOpacity),
+                            lineWidth: Constants.primaryLineWidth)
                     .frame(width: pulseCircleSize, height: pulseCircleSize)
                     .scaleEffect(isPulsing ? Constants.pulseScale : 1)
                     .opacity(isPulsing ? 0 : 1)
@@ -55,7 +56,8 @@ public struct PlayPauseButton: View {
                     )
 
                 Circle()
-                    .stroke(foregroundColor.opacity(Constants.secondaryCircleOpacity), lineWidth: Constants.secondaryLineWidth)
+                    .stroke(foregroundColor.opacity(Constants.secondaryCircleOpacity),
+                            lineWidth: Constants.secondaryLineWidth)
                     .frame(width: pulseCircleSize, height: pulseCircleSize)
                     .scaleEffect(isPulsing ? Constants.pulseScaleSecondary : 1)
                     .opacity(isPulsing ? 0 : 1)
@@ -66,9 +68,7 @@ public struct PlayPauseButton: View {
                     )
             }
 
-            Button(action: {
-                togglePlayPause()
-            }) {
+            Button(action: togglePlayPause) {
                 Image(systemName: isPlaying ? Constants.pauseIcon : Constants.playIcon)
                     .resizable()
                     .frame(width: iconSize, height: iconSize)

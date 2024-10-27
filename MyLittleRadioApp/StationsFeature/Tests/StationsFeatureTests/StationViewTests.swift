@@ -53,15 +53,15 @@ class StationsViewTests: FBSnapshotTestCase {
 
     @MainActor
     func snapshotTest(view: some View, id: String) {
-        let vc = UIHostingController(rootView: view)
+        let viewController = UIHostingController(rootView: view)
 
         let window = UIWindow(frame: canvasSize)
-        window.rootViewController = vc
+        window.rootViewController = viewController
         window.makeKeyAndVisible()
 
-        vc.view.setNeedsLayout()
-        vc.view.layoutIfNeeded()
+        viewController.view.setNeedsLayout()
+        viewController.view.layoutIfNeeded()
 
-        FBSnapshotVerifyView(vc.view, identifier: id)
+        FBSnapshotVerifyView(viewController.view, identifier: id)
     }
 }

@@ -1,4 +1,6 @@
-// swift-tools-version: 5.7
+// swift-tools-version: 6.0
+// The swift-tools-version declares the minimum version of Swift required to build this package.
+
 import PackageDescription
 
 let package = Package(
@@ -10,7 +12,7 @@ let package = Package(
         .library(
             name: "StationDetailsFeature",
             targets: ["StationDetailsFeature"]
-        ),
+        )
     ],
     dependencies: [
         .package(url: "https://github.com/pointfreeco/swift-composable-architecture", from: "1.15.1"),
@@ -31,6 +33,6 @@ let package = Package(
                 "Core",
                 .product(name: "iOSSnapshotTestCase", package: "ios-snapshot-test-case")
             ]
-        ),
+        )
     ]
 )

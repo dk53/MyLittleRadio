@@ -9,10 +9,10 @@ let package = Package(
         .iOS(.v16)
     ],
     products: [
-        // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
             name: "StationsFeature",
-            targets: ["StationsFeature"]),
+            targets: ["StationsFeature"]
+        )
     ],
     dependencies: [
         .package(url: "https://github.com/pointfreeco/swift-composable-architecture", from: "1.15.1"),
@@ -21,8 +21,6 @@ let package = Package(
         .package(url: "https://github.com/uber/ios-snapshot-test-case.git", from: "8.0.0")
     ],
     targets: [
-        // Targets are the basic building blocks of a package, defining a module or a test suite.
-        // Targets can depend on other targets in this package and products from dependencies.
         .target(
             name: "StationsFeature",
             dependencies: [
@@ -38,6 +36,6 @@ let package = Package(
                 "Core",
                 .product(name: "iOSSnapshotTestCase", package: "ios-snapshot-test-case")
             ]
-        ),
+        )
     ]
 )

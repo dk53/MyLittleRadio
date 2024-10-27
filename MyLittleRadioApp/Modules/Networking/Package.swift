@@ -11,10 +11,11 @@ let package = Package(
     products: [
         .library(
             name: "Networking",
-            targets: ["Networking"]),
+            targets: ["Networking"]
+        )
     ],
     dependencies: [
-        .package(url: "https://github.com/pointfreeco/swift-composable-architecture", from: "1.15.1"),
+        .package(url: "https://github.com/pointfreeco/swift-composable-architecture", from: "1.15.1")
     ],
     targets: [
         .target(
@@ -22,6 +23,6 @@ let package = Package(
             dependencies: [
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture")
             ]
-        ),
+        )
     ]
 )

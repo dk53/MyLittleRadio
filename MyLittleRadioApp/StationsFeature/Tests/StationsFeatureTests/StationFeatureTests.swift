@@ -33,9 +33,13 @@ final class StationsFeatureTests: XCTestCase {
 
         let store = await TestStore(
             initialState: StationsFeature.State(),
-            reducer: { StationsFeature() },
+            reducer: {
+                StationsFeature()
+            },
             withDependencies: {
-                $0.apiClient.fetchStations = { throw mockError }
+                $0.apiClient.fetchStations = {
+                    throw mockError
+                }
             }
         )
 
@@ -59,24 +63,19 @@ final class StationsFeatureTests: XCTestCase {
 
     func testSelectStation() async {
         let store = await TestStore(
-            initialState: StationsFeature.State(stations: [Station.mock1, Station.mock2]),
-            reducer: { StationsFeature() }
+            initialState: StationsFeature.State(
+                stations: [
+                    Station.mock1,
+                    Station.mock2
+                ]
+            ),
+            reducer: {
+                StationsFeature()
+            }
         )
 
         await store.send(.selectStation(Station.mock1)) {
             $0.selectedStation = Station.mock1
-        }
-    }
-
-    func testDeselectStation() async {
-        let store = await TestStore(
-            initialState: StationsFeature.State(stations: [Station.mock1, Station.mock2], selectedStation: Station.mock1),
-            reducer: { StationsFeature() }
-        )
-        
-
-        await store.send(.deselect(Station.mock1)) {
-            $0.selectedStation = nil
         }
     }
 }

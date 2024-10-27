@@ -39,7 +39,6 @@ public struct StationsFeature: Sendable {
         case stationsResponse(Result<[Station], Error>)
         case alert(PresentationAction<Alert>)
         case selectStation(Station)
-        case deselect(Station)//Todo check
         case togglePlayPause
     }
 
@@ -92,9 +91,6 @@ public struct StationsFeature: Sendable {
                 return .none
             case .selectStation(let station):
                 state.selectedStation = station
-                return .none
-            case .deselect:
-                state.selectedStation = nil
                 return .none
             case .togglePlayPause:
                 state.isPlaying.toggle()

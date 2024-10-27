@@ -56,7 +56,6 @@ final class AudioPlayerFeatureTests: XCTestCase {
             }
         )
 
-
         await store.send(.playPauseTapped)
 
         await store.receive(.playerStatusChanged(isPlaying: false)) {
@@ -78,4 +77,3 @@ final class AudioPlayerFeatureTests: XCTestCase {
         }
     }
 }
-
