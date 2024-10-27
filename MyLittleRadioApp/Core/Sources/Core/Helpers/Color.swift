@@ -3,7 +3,7 @@ import SwiftUI
 
 public extension Color {
 
-    public var isLight: Bool {
+    var isLight: Bool {
         var red: CGFloat = 0, green: CGFloat = 0, blue: CGFloat = 0, alpha: CGFloat = 0
         UIColor(self).getRed(&red, green: &green, blue: &blue, alpha: &alpha)
 
@@ -14,7 +14,7 @@ public extension Color {
 
 public extension String {
 
-    public var toColor: Color {
+    var toColor: Color {
         // Adapted from here : https://stackoverflow.com/questions/24263007/how-to-use-hex-color-values
         let hex = self.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
         let hexString = hex.hasPrefix("#") ? String(hex.dropFirst()) : hex

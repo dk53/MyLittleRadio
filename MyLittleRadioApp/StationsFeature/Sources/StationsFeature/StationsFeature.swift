@@ -9,23 +9,27 @@ public struct StationsFeature: Sendable {
 
     @ObservableState
     public struct State: Equatable {
+
         public var stations: [Station] = []
+        public var activeStation: Station?
         public var selectedStation: Station?
+        public var isPlaying: Bool
         public var isLoading: Bool = false
-        public var playingStation: Station?
         @Presents public var alert: AlertState<Alert>?
 
         public init(
             stations: [Station] = [],
+            activeStation: Station? = nil,
             selectedStation: Station? = nil,
+            isPlaying: Bool = false,
             isLoading: Bool = false,
-            playingStation: Station? = nil,
             alert: AlertState<Alert>? = nil
         ) {
             self.stations = stations
+            self.activeStation = activeStation
             self.selectedStation = selectedStation
+            self.isPlaying = isPlaying
             self.isLoading = isLoading
-            self.playingStation = playingStation
             self.alert = alert
         }
     }
@@ -35,7 +39,8 @@ public struct StationsFeature: Sendable {
         case stationsResponse(Result<[Station], Error>)
         case alert(PresentationAction<Alert>)
         case selectStation(Station)
-        case deselect(Station)
+        case deselect(Station)//Todo check
+        case togglePlayPause
     }
 
     @CasePathable
@@ -90,6 +95,9 @@ public struct StationsFeature: Sendable {
                 return .none
             case .deselect:
                 state.selectedStation = nil
+                return .none
+            case .togglePlayPause:
+                state.isPlaying.toggle()
                 return .none
             }
         }

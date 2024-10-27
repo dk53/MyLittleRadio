@@ -2,7 +2,7 @@ import SwiftUI
 import ComposableArchitecture
 
 struct AnimatedBarView: View {
-    
+
     enum Constants {
         static let animationDuration: Double = 0.5
         static let frameWidth: CGFloat = 30
@@ -11,13 +11,13 @@ struct AnimatedBarView: View {
         static let barCornerRadius: CGFloat = 3
         static let barWidth: CGFloat = 3
         static let barMaxHeight: CGFloat = 22
-        
+
         // Animation speeds for each bar
         static let speed1: Double = 1.5
         static let speed2: Double = 1.2
         static let speed3: Double = 1.0
         static let speed4: Double = 1.7
-        
+
         // Low heights for each bar in the animation
         static let lowHeight1: CGFloat = 0.4
         static let lowHeight2: CGFloat = 0.3
@@ -25,13 +25,13 @@ struct AnimatedBarView: View {
         static let lowHeight4: CGFloat = 0.3
         static let lowHeight5: CGFloat = 0.5
     }
-    
+
     @State private var drawingHeight = true
-    
+
     private var animation: Animation {
         return .linear(duration: Constants.animationDuration).repeatForever()
     }
-    
+
     var body: some View {
         WithPerceptionTracking {
             HStack(spacing: Constants.barSpacing) {
@@ -53,7 +53,7 @@ struct AnimatedBarView: View {
             .frame(height: Constants.frameHeight)
         }
     }
-    
+
     private func bar(low: CGFloat = 0.0, high: CGFloat = 1.0) -> some View {
         RoundedRectangle(cornerRadius: Constants.barCornerRadius)
             .fill(.white.gradient)

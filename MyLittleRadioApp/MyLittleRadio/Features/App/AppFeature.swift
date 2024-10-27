@@ -45,12 +45,14 @@ struct AppFeature {
             case let .stationsFeature(.selectStation(station)):
                 state.selectedStation = station
                 state.isDetailViewPresented = true
+                let isPlaying = state.audioPlayerFeature.activeStation == station && state.audioPlayerFeature.isPlaying
                 state.stationDetailsFeature = StationDetailsFeature.State(
                     selectedStation: station,
-                    isPlaying: state.stationsFeature.playingStation == station
+                    isPlaying: isPlaying
                 )
-
                 return .send(.audioPlayerFeature(.setActiveStation(station: station)))
+            case .stationsFeature(.togglePlayPause):
+                return .send(.audioPlayerFeature(.playPauseTapped))
             case .stationsFeature:
                 return .none
             case .stationDetailsFeature(.togglePlayPause):
@@ -59,10 +61,11 @@ struct AppFeature {
                 state.selectedStation = nil
                 state.isDetailViewPresented = false
                 return .none
-            case .audioPlayerFeature(.playPauseTapped):
-                state.stationsFeature.playingStation = state.stationDetailsFeature.isPlaying ?
-                state.selectedStation :
-                nil
+            case .audioPlayerFeature(.playerStatusChanged(let isPlaying)):
+                if let station = state.selectedStation {
+                    state.stationsFeature.activeStation = state.selectedStation
+                }
+                state.stationsFeature.isPlaying = isPlaying
                 return .none
             case .stationDetailsFeature:
                 return .none

@@ -18,6 +18,9 @@ public struct StationsView: View {
 
         static let loadingScaleEffect: CGFloat = 0.5
         static let loadingAnimation = Animation.easeInOut(duration: 0.5)
+
+        static let nowPlayingHeight: CGFloat = 60
+        static let nowPlayingPadding: CGFloat = 16
     }
 
     @Perception.Bindable private var store: StoreOf<StationsFeature>
@@ -31,16 +34,31 @@ public struct StationsView: View {
 
     public var body: some View {
         WithPerceptionTracking {
-            ZStack {
-                stationList
-                loadingIndicator
+            VStack(spacing: 0) {
+                ZStack {
+                    stationList
+                    loadingIndicator
+                }
+                .alert($store.scope(state: \.alert, action: \.alert))
+                .task {
+                    store.send(.fetchStations)
+                }
+                .navigationTitle(Constants.navigationTitle)
+                .navigationBarTitleDisplayMode(.automatic)
+
+                Spacer()
+
+                if let station = store.activeStation {
+                    MiniPlayerView(
+                        station: station,
+                        isPlaying: store.isPlaying,
+                        togglePlayPause: { store.send(.togglePlayPause) }
+                    )
+                    .onTapGesture {
+                        store.send(.selectStation(station))
+                    }
+                }
             }
-            .alert($store.scope(state: \.alert, action: \.alert))
-            .task {
-                store.send(.fetchStations)
-            }
-            .navigationTitle(Constants.navigationTitle)
-            .navigationBarTitleDisplayMode(.automatic)
         }
     }
 
@@ -55,7 +73,7 @@ public struct StationsView: View {
             ) {
                 WithPerceptionTracking {
                     ForEach(store.stations) { station in
-                        let isPlaying = store.playingStation == station
+                        let isPlaying = store.activeStation == station && store.isPlaying
                         stationView(station, isPlaying: isPlaying)
                     }
                 }
