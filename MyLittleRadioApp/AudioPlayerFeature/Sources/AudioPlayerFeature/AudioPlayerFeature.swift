@@ -24,7 +24,6 @@ public struct AudioPlayerFeature: Sendable {
         case playerStatusChanged(isPlaying: Bool)
     }
 
-    // To check is this a good way to init the feature ?
     public init() { }
 
     @Dependency(\.audioPlayerClient)

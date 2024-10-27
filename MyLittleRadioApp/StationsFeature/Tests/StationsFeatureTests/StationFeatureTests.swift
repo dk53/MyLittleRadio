@@ -8,15 +8,15 @@ final class StationsFeatureTests: XCTestCase {
 
     @MainActor
     func testFetchStationsSuccess() async throws {
+        let mockStations = [Station.mock1]
         let store = TestStore(
             initialState: StationsFeature.State(),
-            reducer: { StationsFeature() }
-        )
-
-        let mockStations = [Station.mock1]
-        await MainActor.run {
-            store.dependencies.apiClient.fetchStations = { mockStations }
-        }
+            reducer: {
+                StationsFeature()
+            },
+            withDependencies: {
+                $0.apiClient.fetchStations = { mockStations }
+            })
 
         await store.send(.fetchStations) {
             $0.isLoading = true
@@ -29,15 +29,15 @@ final class StationsFeatureTests: XCTestCase {
     }
 
     func testFetchStationsFailure() async throws {
+        let mockError = NSError(domain: "Test", code: 42, userInfo: [NSLocalizedDescriptionKey: "Test Error"])
+
         let store = await TestStore(
             initialState: StationsFeature.State(),
-            reducer: { StationsFeature() }
+            reducer: { StationsFeature() },
+            withDependencies: {
+                $0.apiClient.fetchStations = { throw mockError }
+            }
         )
-
-        let mockError = NSError(domain: "Test", code: 42, userInfo: [NSLocalizedDescriptionKey: "Test Error"])
-        await MainActor.run {
-            store.dependencies.apiClient.fetchStations = { throw mockError }
-        }
 
         await store.send(.fetchStations) {
             $0.isLoading = true

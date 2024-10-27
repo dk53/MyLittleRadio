@@ -18,12 +18,37 @@ class StationsViewTests: FBSnapshotTestCase {
 
     func testStationsViewSnapshot() async {
         let store = Store(
-            initialState: StationsFeature.State(stations: [Station.mock2, Station.mock3], isLoading: false),
-            reducer: { StationsFeature() }
+            initialState: StationsFeature.State(
+                stations: [
+                    Station.mock2,
+                    Station.mock3
+                ],
+                isLoading: false
+            ),
+            reducer: { StationsFeature()
+            }
         )
 
         let stationsView = StationsView(store: store)
         snapshotTest(view: stationsView, id: "StationViewLoaded")
+    }
+
+    func testStationsViewWithMiniPlayerSnapshot() async {
+        let store = Store(
+            initialState: StationsFeature.State(
+                stations: [
+                    Station.mock2,
+                    Station.mock3
+                ],
+                activeStation: Station.mock2,
+                isPlaying: true
+            ),
+            reducer: { StationsFeature()
+            }
+        )
+
+        let stationsView = StationsView(store: store)
+        snapshotTest(view: stationsView, id: "StationViewLoadedPlusMiniPlayer")
     }
 
     @MainActor

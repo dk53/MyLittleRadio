@@ -9,21 +9,25 @@ final class AudioPlayerFeatureTests: XCTestCase {
 
     @MainActor
     func testPlayPauseTappedWhenPlaying() async {
-        let store = TestStore(
-            initialState: AudioPlayerFeature.State(
-                isPlaying: false,
-                activeStation: .mock1
-            ),
-            reducer: { AudioPlayerFeature() }
-        )
-
         let audioPlayerClientMock = AudioPlayerClient(
             playStream: { _ in },
             pause: { },
             stop: { }
         )
 
-        store.dependencies.audioPlayerClient = audioPlayerClientMock
+        let store = TestStore(
+            initialState: AudioPlayerFeature.State(
+                isPlaying: false,
+                activeStation: .mock1
+            ),
+            reducer: {
+                AudioPlayerFeature()
+            },
+            withDependencies: {
+                $0.audioPlayerClient = audioPlayerClientMock
+            }
+        )
+
         await store.send(.playPauseTapped)
 
         await store.receive(.playerStatusChanged(isPlaying: true)) {
@@ -33,21 +37,26 @@ final class AudioPlayerFeatureTests: XCTestCase {
 
     @MainActor
     func testPauseTappedWhenPlaying() async {
-        let store = TestStore(
-            initialState: AudioPlayerFeature.State(
-                isPlaying: true,
-                activeStation: .mock1
-            ),
-            reducer: { AudioPlayerFeature() }
-        )
-
         let audioPlayerClientMock = AudioPlayerClient(
             playStream: { _ in },
             pause: { },
             stop: { }
         )
 
-        store.dependencies.audioPlayerClient = audioPlayerClientMock
+        let store = TestStore(
+            initialState: AudioPlayerFeature.State(
+                isPlaying: true,
+                activeStation: .mock1
+            ),
+            reducer: {
+                AudioPlayerFeature()
+            },
+            withDependencies: {
+                $0.audioPlayerClient = audioPlayerClientMock
+            }
+        )
+
+
         await store.send(.playPauseTapped)
 
         await store.receive(.playerStatusChanged(isPlaying: false)) {
