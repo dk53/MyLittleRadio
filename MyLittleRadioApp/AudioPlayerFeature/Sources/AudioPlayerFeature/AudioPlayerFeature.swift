@@ -45,10 +45,10 @@ public struct AudioPlayerFeature: Sendable {
                     }
                 }
                 return .none
-            case let .playerStatusChanged(isPlaying):
+            case .playerStatusChanged(let isPlaying):
                 state.isPlaying = isPlaying
                 return .none
-            case let .setActiveStation(station):
+            case .setActiveStation(let station):
                 state.isPlaying = station == state.activeStation
                 state.activeStation = station
                 return .none

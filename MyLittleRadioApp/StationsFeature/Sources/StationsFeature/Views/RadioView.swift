@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct RadioView: View {
-
+    
     enum Constants {
         static let cornerRadius: CGFloat = 10
         static let minHeight: CGFloat = 100

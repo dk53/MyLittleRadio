@@ -42,7 +42,7 @@ struct AppFeature {
 
         Reduce<State, Action> { state, action in
             switch action {
-            case let .stationsFeature(.selectStation(station)):
+            case .stationsFeature(.selectStation(let station)):
                 state.selectedStation = station
                 state.isDetailViewPresented = true
                 let isPlaying = state.audioPlayerFeature.activeStation == station && state.audioPlayerFeature.isPlaying
