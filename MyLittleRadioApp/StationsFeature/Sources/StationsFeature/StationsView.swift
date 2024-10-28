@@ -41,7 +41,7 @@ public struct StationsView: View {
 
     public var body: some View {
         WithPerceptionTracking {
-            VStack(spacing: 0) {
+            VStack {
                 ZStack {
                     stationList
                     loadingIndicator

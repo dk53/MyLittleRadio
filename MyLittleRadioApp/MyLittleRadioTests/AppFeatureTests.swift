@@ -1,7 +1,6 @@
 import XCTest
 import ComposableArchitecture
 import Core
-import AudioPlayerFeature
 
 @testable import MyLittleRadio
 
