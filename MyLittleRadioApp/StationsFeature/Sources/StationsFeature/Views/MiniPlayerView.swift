@@ -11,7 +11,7 @@ struct MiniPlayerView: View {
         static let textPaddingLeading: CGFloat = 16
         static let buttonPaddingTrailing: CGFloat = 16
         static let viewHeight: CGFloat = 90
-        static let shadowRadius: CGFloat = 12
+        static let shadowRadius: CGFloat = 8
     }
 
     // MARK: - Properties

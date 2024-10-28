@@ -7,7 +7,7 @@ struct AppView: View {
 
     // MARK: - Constants
 
-    enum Constants {
+    private enum Constants {
 
         static let blurRadius: CGFloat = 10
         static let sheetHeight: CGFloat = 250

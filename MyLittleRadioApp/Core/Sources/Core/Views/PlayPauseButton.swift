@@ -55,11 +55,13 @@ public struct PlayPauseButton: View {
                 Circle()
                     .stroke(foregroundColor.opacity(Constants.primaryCircleOpacity),
                             lineWidth: Constants.primaryLineWidth)
-                    .frame(width: pulseCircleSize, height: pulseCircleSize)
+                    .frame(width: pulseCircleSize,
+                           height: pulseCircleSize)
                     .scaleEffect(isPulsing ? Constants.pulseScale : 1)
                     .opacity(isPulsing ? 0 : 1)
                     .animation(
-                        Animation.easeInOut(duration: Constants.pulseAnimationDuration)
+                        Animation
+                            .easeInOut(duration: Constants.pulseAnimationDuration)
                             .repeatForever(autoreverses: true),
                         value: isPulsing
                     )
@@ -67,11 +69,13 @@ public struct PlayPauseButton: View {
                 Circle()
                     .stroke(foregroundColor.opacity(Constants.secondaryCircleOpacity),
                             lineWidth: Constants.secondaryLineWidth)
-                    .frame(width: pulseCircleSize, height: pulseCircleSize)
+                    .frame(width: pulseCircleSize,
+                           height: pulseCircleSize)
                     .scaleEffect(isPulsing ? Constants.pulseScaleSecondary : 1)
                     .opacity(isPulsing ? 0 : 1)
                     .animation(
-                        Animation.easeInOut(duration: Constants.pulseAnimationDuration * 0.9)
+                        Animation
+                            .easeInOut(duration: Constants.pulseAnimationDuration * 0.9)
                             .repeatForever(autoreverses: true),
                         value: isPulsing
                     )

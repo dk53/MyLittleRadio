@@ -54,7 +54,8 @@ public struct StationsView: View {
                 .navigationBarTitleDisplayMode(.automatic)
 
                 Spacer()
-
+            }
+            .safeAreaInset(edge: .bottom) {
                 if let station = store.activeStation {
                     MiniPlayerView(
                         station: station,

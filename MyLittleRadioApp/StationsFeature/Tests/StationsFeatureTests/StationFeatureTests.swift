@@ -78,4 +78,15 @@ final class StationsFeatureTests: XCTestCase {
             $0.selectedStation = Station.mock1
         }
     }
+
+    func testDeselectStation() async {
+        let store = await TestStore(
+            initialState: StationsFeature.State(stations: [Station.mock1, Station.mock2], selectedStation: Station.mock1),
+            reducer: { StationsFeature() }
+        )
+
+        await store.send(.deselect) {
+            $0.selectedStation = nil
+        }
+    }
 }

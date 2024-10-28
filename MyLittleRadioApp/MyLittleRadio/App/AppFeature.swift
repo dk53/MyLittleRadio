@@ -66,7 +66,6 @@ struct AppFeature {
 
             case .stationsFeature(.togglePlayPause):
                 return .send(.audioPlayerFeature(.playPauseTapped))
-
             case .stationsFeature:
                 return .none
 
@@ -82,8 +81,9 @@ struct AppFeature {
 
             case .dismissStationDetails:
                 state.selectedStation = nil
-               state.isDetailViewPresented = false
-                return .none
+                state.isDetailViewPresented = false
+
+                return .send(.stationsFeature(.deselect))
 
             // MARK: - Audio Player Feature Actions
 
@@ -92,8 +92,8 @@ struct AppFeature {
                     state.stationsFeature.activeStation = station
                 }
                 state.stationsFeature.isPlaying = isPlaying
-                return .none
 
+                return .none
             case .audioPlayerFeature:
                 return .none
             }
