@@ -32,10 +32,10 @@
 		06AD010E2CC10D030093665F /* MyLittleRadioTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyLittleRadioTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DBD47392CC8203400C4EB48 /* MyLittleRadio.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = MyLittleRadio.xctestplan; sourceTree = "<group>"; };
 		4DE291F42CCD05410065BFE4 /* Networking */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Networking; sourceTree = "<group>"; };
-		4DE291FC2CCD07370065BFE4 /* Core */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Core; sourceTree = SOURCE_ROOT; };
-		4DE292012CCD43AD0065BFE4 /* AudioPlayerFeature */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = AudioPlayerFeature; sourceTree = SOURCE_ROOT; };
-		4DE2920A2CCD54790065BFE4 /* StationDetailsFeature */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = StationDetailsFeature; sourceTree = SOURCE_ROOT; };
-		4DE2921E2CCD82180065BFE4 /* StationsFeature */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = StationsFeature; sourceTree = SOURCE_ROOT; };
+		4DED7F852CCFD44F00903C7B /* AudioPlayerFeature */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = AudioPlayerFeature; sourceTree = "<group>"; };
+		4DED7F862CCFD44F00903C7B /* Core */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Core; sourceTree = "<group>"; };
+		4DED7F872CCFD44F00903C7B /* StationDetailsFeature */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = StationDetailsFeature; sourceTree = "<group>"; };
+		4DED7F882CCFD44F00903C7B /* StationsFeature */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = StationsFeature; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -130,11 +130,11 @@
 		4DE291F82CCD06550065BFE4 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				4DE2921E2CCD82180065BFE4 /* StationsFeature */,
-				4DE2920A2CCD54790065BFE4 /* StationDetailsFeature */,
-				4DE292012CCD43AD0065BFE4 /* AudioPlayerFeature */,
-				4DE291FC2CCD07370065BFE4 /* Core */,
 				4DE291F42CCD05410065BFE4 /* Networking */,
+				4DED7F852CCFD44F00903C7B /* AudioPlayerFeature */,
+				4DED7F862CCFD44F00903C7B /* Core */,
+				4DED7F872CCFD44F00903C7B /* StationDetailsFeature */,
+				4DED7F882CCFD44F00903C7B /* StationsFeature */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
