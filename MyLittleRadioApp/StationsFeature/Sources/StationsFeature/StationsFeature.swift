@@ -1,11 +1,11 @@
-// Copyright © Radio France. All rights reserved.
-
 import ComposableArchitecture
 import Core
 import Networking
 
 @Reducer
 public struct StationsFeature: Sendable {
+
+    // MARK: - State
 
     @ObservableState
     public struct State: Equatable {
@@ -34,7 +34,10 @@ public struct StationsFeature: Sendable {
         }
     }
 
+    // MARK: - Actions
+
     public enum Action {
+
         case fetchStations
         case stationsResponse(Result<[Station], Error>)
         case alert(PresentationAction<Alert>)
@@ -42,23 +45,32 @@ public struct StationsFeature: Sendable {
         case togglePlayPause
     }
 
+    // MARK: - Alert
+
     @CasePathable
     public enum Alert: Equatable {
+
         case retryButtonTapped
     }
 
     // MARK: - Dependencies
 
-    public init() { }
-
     @Dependency(\.apiClient)
     var apiClient
+
+    public init() { }
+
+    // MARK: - Reducer
 
     public var body: some ReducerOf<Self> {
         Reduce<State, Action> { state, action in
             switch action {
+
+            // MARK: - Stations Fetching
+
             case .fetchStations:
                 state.isLoading = true
+
                 return .run { send in
                     do {
                         let stations = try await apiClient.fetchStations()
@@ -67,6 +79,7 @@ public struct StationsFeature: Sendable {
                         await send(.stationsResponse(.failure(error)))
                     }
                 }
+
             case .stationsResponse(.success(let stations)):
                 state.isLoading = false
                 state.stations = stations
@@ -83,12 +96,19 @@ public struct StationsFeature: Sendable {
                 } message: {
                     TextState("Failed to fetch stations: \(error.localizedDescription)")
                 }
+
                 return .none
+
+            // MARK: - Alert
 
             case .alert(.presented(.retryButtonTapped)):
                 return .send(.fetchStations)
+
             case .alert:
                 return .none
+
+            // MARK: - Station Selection
+
             case .selectStation(let station):
                 state.selectedStation = station
                 return .none

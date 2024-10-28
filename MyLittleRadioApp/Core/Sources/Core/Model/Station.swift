@@ -1,30 +1,37 @@
-// Copyright © Radio France. All rights reserved.
-
 import Foundation
 
 public struct StationsResponse: Codable {
+
     public let stations: [Station]
 }
 
 public struct Station: Equatable, Codable, Identifiable, Sendable {
 
+    // MARK: - Nested
+
     public struct Analytics: Codable, Equatable, Sendable {
+
         public let value: String
         public let stationAudienceId: Int
     }
 
     public struct Colors: Codable, Equatable, Sendable {
+
         public let primary: String
     }
 
     public struct Assets: Codable, Equatable, Sendable {
+
         public let squareImageUrl: String?
     }
 
     public enum RadioType: String, Equatable, Codable, Sendable {
+
         case onAir = "on_air"
         case locale
     }
+
+    // MARK: - Properties
 
     public let id: String
     public let title: String
@@ -38,6 +45,8 @@ public struct Station: Equatable, Codable, Identifiable, Sendable {
     public let colors: Colors
     public let isMusical: Bool
     public let assets: Assets?
+
+    // MARK: - Init
 
     init(id: String,
          title: String,

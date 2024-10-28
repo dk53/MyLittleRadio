@@ -1,6 +1,6 @@
 import Foundation
 
-struct BaseEndpointConfiguration {
+enum BaseEndpointConfiguration {
 
     static let baseURL = "http://localhost:3000"
 }

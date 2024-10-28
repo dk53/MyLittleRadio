@@ -1,12 +1,13 @@
-// Copyright © Radio France. All rights reserved.
-
 import SwiftUI
 import ComposableArchitecture
 import Core
 
 public struct StationsView: View {
 
-    enum Constants {
+    // MARK: - Constants
+
+    private enum Constants {
+
         static let navigationTitle = "Stations"
 
         static let gridSpacing: CGFloat = 16
@@ -23,14 +24,20 @@ public struct StationsView: View {
         static let nowPlayingPadding: CGFloat = 16
     }
 
+    // MARK: - Properties
+
     @Perception.Bindable private var store: StoreOf<StationsFeature>
     @State var selectedStation: Station?
+
+    // MARK: - Init
 
     public init(store: StoreOf<StationsFeature>,
                 selectedStation: Station? = nil) {
         self.store = store
         self.selectedStation = selectedStation
     }
+
+    // MARK: - Body
 
     public var body: some View {
         WithPerceptionTracking {
@@ -65,7 +72,7 @@ public struct StationsView: View {
     // MARK: - Components
 
     @ViewBuilder
-    var stationList: some View {
+    private var stationList: some View {
         ScrollView {
             LazyVGrid(
                 columns: Constants.gridColumns,
@@ -83,7 +90,7 @@ public struct StationsView: View {
     }
 
     @ViewBuilder
-    func stationView(_ station: Station, isPlaying: Bool) -> some View {
+    private func stationView(_ station: Station, isPlaying: Bool) -> some View {
         RadioView(
             title: station.shortTitle,
             showMusicIcon: station.isMusical,

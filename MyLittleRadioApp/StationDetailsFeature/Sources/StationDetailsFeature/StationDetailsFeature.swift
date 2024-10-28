@@ -4,10 +4,15 @@ import Core
 @Reducer
 public struct StationDetailsFeature: Reducer {
 
+    // MARK: - State
+
     @ObservableState
     public struct State: Equatable {
+
         public var selectedStation: Station?
-        public var isPlaying: Bool = false
+        public var isPlaying: Bool
+
+        // MARK: - Init
 
         public init(
             selectedStation: Station? = nil,
@@ -18,12 +23,18 @@ public struct StationDetailsFeature: Reducer {
         }
     }
 
+    // MARK: - Actions
+
     @CasePathable
     public enum Action {
         case togglePlayPause
     }
 
+    // MARK: - Init
+
     public init() { }
+
+    // MARK: - Reducer
 
     public var body: some ReducerOf<Self> {
         Reduce<State, Action> { state, action in

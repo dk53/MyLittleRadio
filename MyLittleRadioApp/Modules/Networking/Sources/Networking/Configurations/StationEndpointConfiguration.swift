@@ -1,6 +1,6 @@
 import Foundation
 
-struct StationsEndpointConfiguration {
+enum StationsEndpointConfiguration {
 
     static var stations: String { BaseEndpointConfiguration.baseURL + "/stations" }
 }

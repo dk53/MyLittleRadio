@@ -2,7 +2,10 @@ import SwiftUI
 
 public struct PlayPauseButton: View {
 
-    enum Constants {
+    // MARK: - Constants
+
+    private enum Constants {
+
         static let defaultIconSize: CGFloat = 60
 
         static let pulseCircleSizeInset: CGFloat = 20
@@ -19,12 +22,16 @@ public struct PlayPauseButton: View {
         static let pauseIcon: String = "pause.circle.fill"
     }
 
+    // MARK: - Properties
+
     private let isPlaying: Bool
     private let foregroundColor: Color
     private let iconSize: CGFloat
     private let togglePlayPause: () -> Void
 
     @State private var isPulsing = false
+
+    // MARK: - Init
 
     public init(
         isPlaying: Bool,
@@ -37,6 +44,8 @@ public struct PlayPauseButton: View {
         self.iconSize = iconSize ?? Constants.defaultIconSize
         self.togglePlayPause = togglePlayPause
     }
+
+    // MARK: - Body
 
     public var body: some View {
         let pulseCircleSize = iconSize + Constants.pulseCircleSizeInset

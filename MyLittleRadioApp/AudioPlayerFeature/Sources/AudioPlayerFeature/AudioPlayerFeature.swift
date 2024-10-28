@@ -5,8 +5,11 @@ import Core
 @Reducer
 public struct AudioPlayerFeature: Sendable {
 
+    // MARK: - State
+
     @ObservableState
     public struct State: Equatable {
+
         public var isPlaying: Bool = false
         public var activeStation: Station?
         public var isLoading: Bool = false
@@ -18,16 +21,25 @@ public struct AudioPlayerFeature: Sendable {
         }
     }
 
+    // MARK: - Action
+
     public enum Action: Equatable {
+
         case playPauseTapped
         case setActiveStation(station: Station)
         case playerStatusChanged(isPlaying: Bool)
     }
 
-    public init() { }
+    // MARK: - Dependencies
 
     @Dependency(\.audioPlayerClient)
     private var audioPlayerClient
+
+    // MARK: - Initializer
+
+    public init() { }
+
+    // MARK: - Reducer
 
     public var body: some ReducerOf<Self> {
         Reduce { state, action in
@@ -44,13 +56,19 @@ public struct AudioPlayerFeature: Sendable {
                         await send(.playerStatusChanged(isPlaying: true))
                     }
                 }
+
                 return .none
             case .playerStatusChanged(let isPlaying):
                 state.isPlaying = isPlaying
+
                 return .none
             case .setActiveStation(let station):
-                state.isPlaying = station == state.activeStation
+                if station != state.activeStation {
+                    state.isPlaying = false
+                }
+
                 state.activeStation = station
+
                 return .none
             }
         }

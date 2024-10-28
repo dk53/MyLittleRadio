@@ -3,18 +3,30 @@ import Core
 
 struct MiniPlayerView: View {
 
-    enum Constants {
+    // MARK: - Constants
+
+    private enum Constants {
+
         static let playPauseIconSize: CGFloat = 40
         static let textPaddingLeading: CGFloat = 16
         static let buttonPaddingTrailing: CGFloat = 16
         static let viewHeight: CGFloat = 90
-        static let cornerRadius: CGFloat = 20
         static let shadowRadius: CGFloat = 12
     }
 
-    let station: Station
-    let isPlaying: Bool
-    let togglePlayPause: () -> Void
+    // MARK: - Properties
+
+    private let station: Station
+    private let isPlaying: Bool
+    private let togglePlayPause: () -> Void
+
+    init(station: Station, isPlaying: Bool, togglePlayPause: @escaping () -> Void) {
+        self.station = station
+        self.isPlaying = isPlaying
+        self.togglePlayPause = togglePlayPause
+    }
+
+    // MARK: - Body
 
     var body: some View {
         HStack(alignment: .center) {
@@ -35,7 +47,6 @@ struct MiniPlayerView: View {
         }
         .frame(height: Constants.viewHeight)
         .background(station.colors.primary.toColor)
-        .cornerRadius(Constants.cornerRadius)
         .shadow(radius: Constants.shadowRadius)
     }
 }

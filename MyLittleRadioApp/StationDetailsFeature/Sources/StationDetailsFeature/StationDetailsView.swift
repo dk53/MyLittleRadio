@@ -3,9 +3,13 @@ import ComposableArchitecture
 import Core
 
 public struct StationDetailsView: View {
-    @Perception.Bindable var store: StoreOf<StationDetailsFeature>
 
-    private var onDismiss: () -> Void
+    // MARK: - Properties
+
+    @Perception.Bindable private var store: StoreOf<StationDetailsFeature>
+    private let onDismiss: () -> Void
+
+    // MARK: - Init
 
     public init(
         store: StoreOf<StationDetailsFeature>,
@@ -15,15 +19,17 @@ public struct StationDetailsView: View {
         self.onDismiss = onDismiss
     }
 
+    // MARK: - Body
+
     public var body: some View {
         WithPerceptionTracking {
             if let selectedStation = store.selectedStation {
                 DetailsView(
                     selectedStation: selectedStation,
                     foregroundColor: selectedStation.colors.primary.toColor.isLight ? .black : .white,
-                    onDismiss: onDismiss,
                     isPlaying: store.isPlaying,
-                    togglePlayPause: { store.send(.togglePlayPause) }
+                    togglePlayPause: { store.send(.togglePlayPause) },
+                    onDismiss: onDismiss
                 )
             }
         }

@@ -1,42 +1,24 @@
-import iOSSnapshotTestCase
-import SwiftUI
-import ComposableArchitecture
 import XCTest
+import ComposableArchitecture
 import Core
-import AudioPlayerFeature
 
 @testable import StationDetailsFeature
 
-class StationsDetailsViewTests: FBSnapshotTestCase {
+final class StationDetailsFeatureTests: XCTestCase {
 
-    let canvasSize = CGRect(x: 0, y: 0, width: 300, height: 300)
-
-    override func setUp() {
-        super.setUp()
-        self.recordMode = false
-    }
-
-    func testStationsViewSnapshot() async {
-        let store = await Store(
+    @MainActor
+    func testTogglePlayPause() async {
+        let store = TestStore(
             initialState: StationDetailsFeature.State(selectedStation: Station.mock1),
             reducer: { StationDetailsFeature() }
         )
 
-        let stationsView = await StationDetailsView(store: store) {}
-        await snapshotTest(view: stationsView, id: "StationDetailsView")
-    }
+        await store.send(.togglePlayPause) {
+            $0.isPlaying = true
+        }
 
-    @MainActor
-    func snapshotTest(view: some View, id: String) {
-        let viewController = UIHostingController(rootView: view)
-
-        let window = UIWindow(frame: canvasSize)
-        window.rootViewController = viewController
-        window.makeKeyAndVisible()
-
-        viewController.view.setNeedsLayout()
-        viewController.view.layoutIfNeeded()
-
-        FBSnapshotVerifyView(viewController.view, identifier: id)
+        await store.send(.togglePlayPause) {
+            $0.isPlaying = false
+        }
     }
 }

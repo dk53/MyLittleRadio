@@ -3,11 +3,31 @@ import Core
 
 struct DetailsView: View {
 
-    let selectedStation: Station
-    let foregroundColor: Color
-    let onDismiss: () -> Void
-    let isPlaying: Bool
-    let togglePlayPause: () -> Void
+    // MARK: - Properties
+
+    private let selectedStation: Station
+    private let foregroundColor: Color
+    private let isPlaying: Bool
+    private let togglePlayPause: () -> Void
+    private let onDismiss: () -> Void
+
+    // MARK: - Init
+
+    init(
+        selectedStation: Station,
+        foregroundColor: Color,
+        isPlaying: Bool,
+        togglePlayPause: @escaping () -> Void,
+        onDismiss: @escaping () -> Void
+    ) {
+        self.selectedStation = selectedStation
+        self.foregroundColor = foregroundColor
+        self.isPlaying = isPlaying
+        self.togglePlayPause = togglePlayPause
+        self.onDismiss = onDismiss
+    }
+
+    // MARK: - Body
 
     var body: some View {
         Rectangle()
@@ -27,35 +47,5 @@ struct DetailsView: View {
                     Spacer()
                 }.padding()
             ).ignoresSafeArea()
-    }
-}
-
-struct StationHeaderView: View {
-
-    enum Constants {
-        static let padding: CGFloat = 16
-    }
-
-    let title: String
-    let foregroundColor: Color
-    let onDismiss: () -> Void
-
-    var body: some View {
-        HStack {
-            Text(title)
-                .font(.title)
-                .padding()
-                .multilineTextAlignment(.center)
-                .foregroundColor(foregroundColor)
-
-            Spacer()
-
-            Button(action: onDismiss) {
-                Image(systemName: "xmark")
-                    .foregroundColor(foregroundColor)
-                    .padding()
-            }
-        }
-        .padding(.top, Constants.padding)
     }
 }

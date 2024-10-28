@@ -2,16 +2,24 @@ import SwiftUI
 
 struct RadioView: View {
 
-    enum Constants {
+    // MARK: - Constants
+
+    private enum Constants {
+
         static let cornerRadius: CGFloat = 10
         static let minHeight: CGFloat = 100
         static let leadingPaddingWithBar: CGFloat = 5
+        static let musicNoteIconName = "music.note"
     }
+
+    // MARK: - Properties
 
     private let title: String
     private let showMusicIcon: Bool
     private let color: Color
     private let isPlaying: Bool
+
+    // MARK: - Init
 
     init(
         title: String,
@@ -24,6 +32,8 @@ struct RadioView: View {
         self.color = color
         self.isPlaying = isPlaying
     }
+
+    // MARK: - Body
 
     var body: some View {
         RoundedRectangle(cornerRadius: Constants.cornerRadius)
@@ -46,7 +56,7 @@ struct RadioView: View {
                 .padding(.leading, isPlaying ? Constants.leadingPaddingWithBar : 0)
 
             if showMusicIcon {
-                Image(systemName: "music.note")
+                Image(systemName: Constants.musicNoteIconName)
                     .foregroundColor(color.isLight ? .black : .white)
             }
         }

@@ -3,25 +3,14 @@ import AVFoundation
 import ComposableArchitecture
 
 public struct AudioPlayerClient: Sendable {
+
     public var playStream: @Sendable (URL) async -> Void
     public var pause: @Sendable () async -> Void
     public var stop: @Sendable () async -> Void
-}
 
-private enum AudioPlayerClientKey: DependencyKey {
-    static let liveValue: AudioPlayerClient = .live()
-    static let testValue: AudioPlayerClient = .mock
-}
+    // MARK: - Live Instance
 
-extension DependencyValues {
-    var audioPlayerClient: AudioPlayerClient {
-        get { self[AudioPlayerClientKey.self] }
-        set { self[AudioPlayerClientKey.self] = newValue }
-    }
-}
-
-public extension AudioPlayerClient {
-    static func live() -> Self {
+    public static func live() -> Self {
         let player = AVPlayer()
 
         return Self(
@@ -44,5 +33,23 @@ public extension AudioPlayerClient {
                 }
             }
         )
+    }
+}
+
+// MARK: - AudioPlayerClient Dependency Key
+
+private enum AudioPlayerClientKey: DependencyKey {
+
+    static let liveValue: AudioPlayerClient = .live()
+    static let testValue: AudioPlayerClient = .mock
+}
+
+// MARK: - DependencyValues Extension
+
+extension DependencyValues {
+
+    var audioPlayerClient: AudioPlayerClient {
+        get { self[AudioPlayerClientKey.self] }
+        set { self[AudioPlayerClientKey.self] = newValue }
     }
 }

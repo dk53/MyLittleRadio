@@ -5,16 +5,25 @@ import StationDetailsFeature
 
 struct AppView: View {
 
+    // MARK: - Constants
+
     enum Constants {
+
         static let blurRadius: CGFloat = 10
         static let sheetHeight: CGFloat = 250
     }
 
+    // MARK: - Properties
+
     @Perception.Bindable var store: StoreOf<AppFeature>
+
+    // MARK: - Init
 
     init(store: StoreOf<AppFeature>) {
         self.store = store
     }
+
+    // MARK: - Body
 
     var body: some View {
         WithPerceptionTracking {

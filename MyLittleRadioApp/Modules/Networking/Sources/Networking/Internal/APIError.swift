@@ -1,10 +1,13 @@
 import Foundation
 
 enum ApiError: LocalizedError {
+
     case invalidURL
     case decodingError
     case networkError(URLError)
     case unknown
+
+    // MARK: - LocalizedError Description
 
     var errorDescription: String? {
         switch self {

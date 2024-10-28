@@ -2,7 +2,10 @@ import SwiftUI
 
 struct AnimatedBarView: View {
 
-    enum Constants {
+    // MARK: - Constants
+
+    private enum Constants {
+
         static let animationDuration: Double = 0.5
         static let frameWidth: CGFloat = 30
         static let frameHeight: CGFloat = 40
@@ -25,11 +28,15 @@ struct AnimatedBarView: View {
         static let lowHeight5: CGFloat = 0.5
     }
 
+    // MARK: - Properties
+
     @State private var drawingHeight = true
 
     private var animation: Animation {
         return .linear(duration: Constants.animationDuration).repeatForever()
     }
+
+    // MARK: - Body
 
     var body: some View {
         HStack(spacing: Constants.barSpacing) {

@@ -1,15 +1,15 @@
 import iOSSnapshotTestCase
 import SwiftUI
 import ComposableArchitecture
-import Core
 import XCTest
+import Core
 
 @testable import StationsFeature
 
 @MainActor
 class StationsViewTests: FBSnapshotTestCase {
 
-    let canvasSize = CGRect(x: 0, y: 0, width: 375, height: 667)
+    private let canvasSize = CGRect(x: 0, y: 0, width: 375, height: 667)
 
     override func setUp() {
         super.setUp()

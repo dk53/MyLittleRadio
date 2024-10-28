@@ -1,5 +1,3 @@
-// Copyright © Radio France. All rights reserved.
-
 import Dependencies
 import DependenciesMacros
 import Core

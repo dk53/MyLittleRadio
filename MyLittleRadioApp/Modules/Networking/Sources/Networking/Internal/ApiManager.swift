@@ -1,9 +1,9 @@
-// Copyright © Radio France. All rights reserved.
-
 import Foundation
 import Core
 
 final class ApiManager: Sendable {
+
+    // MARK: - Fetch Stations
 
     func fetchStations() async throws -> [Station] {
         guard let url = URL(string: StationsEndpointConfiguration.stations) else {
