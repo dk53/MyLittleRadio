@@ -4,7 +4,7 @@ import Core
 
 @testable import MyLittleRadio
 
-class AppFeatureTests: XCTestCase {
+final class AppFeatureTests: XCTestCase {
 
     @MainActor
     func testPlayStationThroughAppFeature() async {

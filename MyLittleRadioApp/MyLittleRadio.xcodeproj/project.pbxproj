@@ -415,7 +415,6 @@
 				CODE_SIGN_ENTITLEMENTS = MyLittleRadio/MyLittleRadio.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"MyLittleRadio/Preview Content\"";
 				DEVELOPMENT_TEAM = 7J8GPSDG34;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -457,7 +456,6 @@
 				CODE_SIGN_ENTITLEMENTS = MyLittleRadio/MyLittleRadio.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"MyLittleRadio/Preview Content\"";
 				DEVELOPMENT_TEAM = 7J8GPSDG34;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;

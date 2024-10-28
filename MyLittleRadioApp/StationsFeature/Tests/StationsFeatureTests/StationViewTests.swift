@@ -7,7 +7,7 @@ import Core
 @testable import StationsFeature
 
 @MainActor
-class StationsViewTests: FBSnapshotTestCase {
+final class StationsViewTests: FBSnapshotTestCase {
 
     private let canvasSize = CGRect(x: 0, y: 0, width: 375, height: 667)
 

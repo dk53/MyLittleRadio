@@ -6,7 +6,8 @@ import Core
 
 @testable import StationDetailsFeature
 
-class StationsDetailsViewTests: FBSnapshotTestCase {
+@MainActor
+final class StationsDetailsViewTests: FBSnapshotTestCase {
 
     private let canvasSize = CGRect(x: 0, y: 0, width: 300, height: 300)
 
@@ -15,14 +16,14 @@ class StationsDetailsViewTests: FBSnapshotTestCase {
         self.recordMode = false
     }
 
-    func testStationsViewSnapshot() async {
-        let store = await Store(
+    func testStationsViewSnapshot() {
+        let store = Store(
             initialState: StationDetailsFeature.State(selectedStation: Station.mock1),
             reducer: { StationDetailsFeature() }
         )
 
-        let stationsView = await StationDetailsView(store: store) {}
-        await snapshotTest(view: stationsView, id: "StationDetailsView")
+        let stationsView = StationDetailsView(store: store) {}
+        snapshotTest(view: stationsView, id: "StationDetailsView")
     }
 
     @MainActor
