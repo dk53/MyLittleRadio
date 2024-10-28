@@ -10,6 +10,7 @@ struct RadioView: View {
         static let minHeight: CGFloat = 100
         static let leadingPaddingWithBar: CGFloat = 5
         static let musicNoteIconName = "music.note"
+        static let accessibilityLabel = "Station name"
     }
 
     // MARK: - Properties
@@ -41,7 +42,7 @@ struct RadioView: View {
             .frame(minHeight: Constants.minHeight)
             .overlay(contentOverlay)
             .accessibilityElement(children: .combine)
-            .accessibilityLabel(Text("Station name: \(title)"))
+            .accessibilityLabel(Text(Constants.accessibilityLabel + " \(title)"))
     }
 
     @ViewBuilder
