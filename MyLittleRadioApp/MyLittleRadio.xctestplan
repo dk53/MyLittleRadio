@@ -28,14 +28,21 @@
   "testTargets" : [
     {
       "target" : {
-        "containerPath" : "container:Core",
-        "identifier" : "CoreTests",
-        "name" : "CoreTests"
+        "containerPath" : "container:Modules\/StationDetailsFeature",
+        "identifier" : "StationDetailsFeatureTests",
+        "name" : "StationDetailsFeatureTests"
       }
     },
     {
       "target" : {
-        "containerPath" : "container:StationsFeature",
+        "containerPath" : "container:Modules\/AudioPlayerFeature",
+        "identifier" : "AudioPlayerFeatureTests",
+        "name" : "AudioPlayerFeatureTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Modules\/StationsFeature",
         "identifier" : "StationsFeatureTests",
         "name" : "StationsFeatureTests"
       }
@@ -49,16 +56,9 @@
     },
     {
       "target" : {
-        "containerPath" : "container:AudioPlayerFeature",
-        "identifier" : "AudioPlayerFeatureTests",
-        "name" : "AudioPlayerFeatureTests"
-      }
-    },
-    {
-      "target" : {
-        "containerPath" : "container:StationDetailsFeature",
-        "identifier" : "StationDetailsFeatureTests",
-        "name" : "StationDetailsFeatureTests"
+        "containerPath" : "container:Modules\/Core",
+        "identifier" : "CoreTests",
+        "name" : "CoreTests"
       }
     }
   ],
